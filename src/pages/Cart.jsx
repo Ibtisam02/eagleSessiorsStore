@@ -4,10 +4,11 @@ import { getAllSkusForCart } from "../redux/cartSlice/getItemsInCart";
 import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { MoonLoader } from 'react-spinners';
 
 function Cart() {
   let dispatch = useDispatch();
-  let { cart } = useSelector((state) => state.itemsInCart);
+  let {isLoading, cart } = useSelector((state) => state.itemsInCart);
   let [orders, setOrders] = useState(
     JSON.parse(localStorage.getItem("order")) || []
   );
@@ -98,7 +99,15 @@ function Cart() {
       <div className="max-w-4xl mx-auto px-4">
         <h1 className="text-2xl font-bold mb-8">Shopping Cart</h1>
 
-        <div className="space-y-4">
+        {isLoading? <div className="sweet-loading  h-screen flex justify-center items-center">
+      <MoonLoader
+      color="#ff0000"
+      cssOverride={{}}
+      loading={isLoading}
+      size={60}
+      speedMultiplier={2}
+      /> 
+</div>:<div className="space-y-4">
           {cart?.map((item, index) => (
             <div
               key={index}
@@ -197,7 +206,7 @@ function Cart() {
               </div>
             </div>
           ))}
-        </div>
+        </div>}
           <input onClick={()=>{localStorage.removeItem("order");setChange(!change);toast.success("Cart Cleared Successfully!")}} className="mt-4 cursor-pointer py-3 px-4 bg-black hover:bg-primary text-white rounded-lg transition-colors" type="button" value="Clear Cart" />
 
         {cart?.length > 0 ? (

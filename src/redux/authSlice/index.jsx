@@ -23,6 +23,7 @@ export const registerUser = createAsyncThunk(
       return response.data;
     } catch (error) {
       rejectWithValue(error);
+      return toast.error(error.response.data.message)
     }
   }
 );
@@ -37,6 +38,7 @@ export const loginUser = createAsyncThunk(
       return response.data;
     } catch (error) {
       rejectWithValue(error);
+      return toast.error(error.response.data.message)
     }
   }
 );
@@ -50,7 +52,7 @@ export const loginWithGoogle = createAsyncThunk(
       return response.data;
     } catch (error) {
       console.log(error);
-      
+      return toast.error(error.response.data.message)
     }
   }
 );
@@ -135,7 +137,7 @@ const authSlice = createSlice({
       .addCase(checkAuth.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload?.success?action.payload?.user:null;
-        state.isAuthenticated = true;
+        state.isAuthenticated =action.payload?.success?true:false;
       })
       .addCase(checkAuth.rejected, (state, action) => {
         state.isLoading = false;

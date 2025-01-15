@@ -8,14 +8,16 @@ import { createProduct } from "../../redux/productSlice/CreateProductSlic";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { getSingleProduct } from "../../redux/productSlice/getsingleProductSlice";
+import { updateProduct } from "../../redux/productSlice/updateProductSlice";
+import { MoonLoader } from "react-spinners";
 
 const AddProduct = () => {
   let { id } = useParams();
   let dispatch = useDispatch();
   const [activeTab, setActiveTab] = useState(0);
   const [errors, setErrors] = useState({});
-  const { isLoading } = useSelector((state) => state.createProduct);
-  const { product, skus } = useSelector((state) => state.getSingleProduct);
+  const { isLoading,product, skus } = useSelector((state) => state.getSingleProduct);
+  const { isLoadingUpdate } = useSelector((state) => state.updateProduct);
 
   useEffect(() => {
     dispatch(getSingleProduct(id));
@@ -28,13 +30,14 @@ const AddProduct = () => {
     brand: "",
     basePrice: "",
     category: "",
+    description:""
   });
 
   // SKUs State
   const [skusToSend, setSkusToSend] = useState([]);
 
   // Description State
-  const [description, setDescription] = useState("");
+
 
   // New Category Form State
   const [categories] = useState(["Scissors", "Razors", "Accessories"]);
@@ -47,8 +50,9 @@ const AddProduct = () => {
         brand: product?.brand || "",
         basePrice: product?.basePprice || "",
         category: product?.catagory || "",
+        shippingFee: product?.shippingFee || "",
+        description:product?.description || ""
       });
-      setDescription(product?.description || "");
     }
   }, [product]);
 
@@ -56,10 +60,9 @@ const AddProduct = () => {
 
   const addProductHandler = (e) => {
     e.preventDefault();
-
+    
     // Filter SKUs where stock or price has changed
-    console.log(basicDetails);
-    console.log(skus);
+  
     const updatedSkus = skus?.map((sku, index) => {
       
       
@@ -70,17 +73,11 @@ const AddProduct = () => {
         ? { ...sku, ...updatedSku }
         : null;
     }).filter(Boolean);
-    console.log(updatedSkus);
-    const formData = new FormData();
-    formData.append("name", basicDetails.name);
-    formData.append("brand", basicDetails.brand);
-    formData.append("basePrice", basicDetails.basePrice);
-    formData.append("category", basicDetails.category);
-    formData.append("discount", basicDetails.discount);
-    formData.append("description", description);
-    formData.append("skus", JSON.stringify(updatedSkus));
+   
 
-    dispatch(createProduct(formData)).then((res) => {
+    dispatch(updateProduct({skus:updatedSkus,basicDetails:basicDetails, id:id})).then((res) => {
+      console.log(res);
+      
       if (res.payload.success) {
         toast.success(res.payload.message);
       }
@@ -89,7 +86,15 @@ const AddProduct = () => {
 
   return (
     <div className="lg:ml-72 min-h-screen bg-white py-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {isLoading? <div className="sweet-loading  h-screen flex justify-center items-center">
+      <MoonLoader
+      color="#ff0000"
+      cssOverride={{}}
+      loading={isLoading}
+      size={60}
+      speedMultiplier={1}
+      /> 
+</div>:<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-black mb-8">Update Product</h1>
 
         <div className="mb-8">
@@ -166,6 +171,20 @@ const AddProduct = () => {
                     value={basicDetails.brand}
                     onChange={(e) =>
                       setBasicDetails({ ...basicDetails, brand: e.target.value })
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-black">
+                    Shipping Fee
+                  </label>
+                  <input
+                    type="number"
+                    min={0}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black"
+                    value={basicDetails.shippingFee}
+                    onChange={(e) =>
+                      setBasicDetails({ ...basicDetails, shippingFee: e.target.value })
                     }
                   />
                 </div>
@@ -279,22 +298,23 @@ const AddProduct = () => {
                 <textarea
                   rows={10}
                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={basicDetails.description}
+                  onChange={(e) => setBasicDetails({ ...basicDetails, description: e.target.value })}
                   placeholder="Enter detailed product description..."
                 />
               </div>
               <div className="flex justify-between mt-8">
                 <button
                   type="button"
-                  className="px-4 py-2 text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800"
+                  disabled={isLoadingUpdate}
+                  className="px-4 py-2 text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 disabled:bg-gray-400 disabled:cursor-not-allowed"
                   onClick={() => handleTabChange(1)}
                 >
                   <FaArrowLeft className="mr-2" /> Back: SKUs
                 </button>
                 <button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isLoadingUpdate}
                   className="px-6 py-2 text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
                   onClick={addProductHandler}
                 >
@@ -304,7 +324,7 @@ const AddProduct = () => {
             </div>
           )}
         </div>
-      </div>
+      </div>}
     </div>
   );
 };

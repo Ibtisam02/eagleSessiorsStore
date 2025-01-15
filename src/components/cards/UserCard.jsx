@@ -56,12 +56,10 @@ const UserCard = ({
 
   return (
     <Link
-    to={`/product/${id}`}
+      to={`/product/${id}`}
       ref={cardRef}
-      className={`group relative flex flex-col w-full max-w-[250px]  transform transition-all duration-700 ease-out
-        ${
-          isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"
-        }`}
+      className={`group relative flex flex-col w-[calc(50%-4px)] lg:w-[calc(25%-6px)] transform transition-all duration-700 ease-out
+        ${isVisible ? "translate-y-0 opacity-100" : "translate-y-16 opacity-0"}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -73,12 +71,12 @@ const UserCard = ({
       )}
 
       {/* Sale Badge */}
-      <span className="absolute bottom-[45%] left-2 bg-black text-white px-2 py-0.5 text-xs font-medium rounded-md">
+      {/*<span className="absolute bottom-[45%] left-2 bg-black text-white px-2 py-0.5 text-xs font-medium rounded-md">
         Sale
-      </span>
+      </span>*/}
 
       {/* Image Container */}
-      <div className="relative w-full pb-[90%] overflow-hidden rounded-lg bg-gray-100 mb-2">
+      <div className="relative w-full pb-[90%] overflow-hidden rounded-lg bg-gray-100">
         {/* First Image */}
         <img
           src={image1}
@@ -99,34 +97,29 @@ const UserCard = ({
       </div>
 
       {/* Product Info */}
-      <div className="flex flex-col flex-grow space-y-1">
-        <h3 className="text-xs font-medium text-gray-900 truncate group-hover:underline  cursor-pointer">
-          {title.length>57?title.slice(0,54)+"...":title}
+      <div className="flex flex-col flex-grow mt-2 space-y-2">
+        <h3 className="text-xs font-medium text-gray-900 break-words group-hover:underline cursor-pointer">
+          {title}
         </h3>
 
-        {/* Tooltip for full title */}
-        <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -top-2 left-0 right-0 -translate-y-full bg-black text-white text-xs p-2 rounded-md z-20 pointer-events-none">
-          {title.length>57?title.slice(0,54)+"...":title}
-        </div>
-
-        {rating>0?<div className="flex items-center space-x-2">
-              
-              {[...new Array(Math.ceil(rating)).keys()].map((star) => (
-                <span key={star} className="text-yellow-400 text-xl">★</span>
-              ))}
-              <span className="text-sm text-gray-600">({reviews} reviews)</span>
-            </div>:null}
-        
+        {rating > 0 ? (
+          <div className="flex items-center gap-1">
+            {[...new Array(Math.ceil(rating)).keys()].map((star) => (
+              <span key={star} className="text-yellow-400 text-sm">★</span>
+            ))}
+            <span className="text-xs text-gray-600">({reviews})</span>
+          </div>
+        ) : null}
 
         {/* Pricing */}
-        <div className="flex flex-col">
+        <div className="flex flex-col mt-auto">
           <p className="text-xs text-gray-500 line-through">
-          {currency} {originalPrice.toLocaleString()} 
+            {currency} {originalPrice.toLocaleString()}
           </p>
           <div className="flex items-baseline">
             <span className="text-xs font-medium">From </span>
             <p className="ml-1 text-sm font-semibold">
-            {currency} {salePrice.toLocaleString()} 
+              {currency} {salePrice.toLocaleString()}
             </p>
           </div>
         </div>

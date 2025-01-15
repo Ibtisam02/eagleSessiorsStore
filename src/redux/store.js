@@ -17,6 +17,7 @@ import sendEmailForMsgReducer from "./reviewSlice.jsx/sendMsgEmail"
 import placeOrderReducer from "./orderSice/placeOrderSlice"
 import getLogoReducer from "./reviewSlice.jsx/getLogo"
 import stripePaywithCardReducer from "./orderSice/stripePayment"
+import updateProductReducer from "./productSlice/updateProductSlice"
 
 
  const store = configureStore({
@@ -38,7 +39,8 @@ import stripePaywithCardReducer from "./orderSice/stripePayment"
         sendMsgEmail:sendEmailForMsgReducer,
         placeOrder:placeOrderReducer,
         getLogoAll:getLogoReducer,
-        payWithStripeCard:stripePaywithCardReducer
+        payWithStripeCard:stripePaywithCardReducer,
+        updateProduct:updateProductReducer
     }
 })
 

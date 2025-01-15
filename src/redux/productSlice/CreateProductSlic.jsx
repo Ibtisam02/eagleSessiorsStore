@@ -45,7 +45,7 @@ export const createProduct = createAsyncThunk(
         })
         .addCase(createProduct.rejected, (state, action) => {
           state.isLoading = false;
-          state.messages = false;
+          state.messages = null;
         })
     },
   });

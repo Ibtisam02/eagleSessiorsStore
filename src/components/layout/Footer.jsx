@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const footerLinks = [
-    { title: "About us", href: "#" },
-    { title: "Privacy Policy", href: "#" },
-    { title: "Shipping Policy", href: "#" },
-    { title: "Refund policy", href: "#" },
+    { title: "About us", href: "/about" },
+    { title: "Privacy Policy", href: "/privacy-policy" },
+    { title: "Shipping Policy", href: "/shipping-policy" },
+    { title: "Refund policy", href: "/refund-policy" },
     { title: "Terms of Service", href: "#" },
     { title: "Do not sell or share my personal information", href: "#" },
   ];
@@ -18,9 +19,9 @@ const Footer = () => {
           <div className="space-y-3">
             {footerLinks.map((link) => (
               <div key={link.title}>
-                <a href={link.href} className="hover:text-gray-300 transition-colors">
+                <Link to={link.href}  className="hover:text-gray-300 transition-colors">
                   {link.title}
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -67,10 +68,10 @@ const Footer = () => {
               {/*<a href="#" className="hover:text-gray-300">Powered by Shopify</a>*/}
             </div>
             <div className="flex flex-wrap items-center gap-4 text-sm">
-              <a href="#" className="hover:text-gray-300">Refund policy</a>
-              <a href="#" className="hover:text-gray-300">Privacy policy</a>
-              <a href="#" className="hover:text-gray-300">Terms of service</a>
-              <a href="#" className="hover:text-gray-300">Shipping policy</a>
+              <Link to={"/refund-policy"} className="hover:text-gray-300">Refund policy</Link>
+              <Link to={"/privacy-policy"} href="/privacy-policy" className="hover:text-gray-300">Privacy policy</Link>
+              <Link to={"/-policy"}  className="hover:text-gray-300">Terms of service</Link>
+              <Link to={"/shipping-policy"}  className="hover:text-gray-300">Shipping policy</Link>
             </div>
           </div>
         </div>

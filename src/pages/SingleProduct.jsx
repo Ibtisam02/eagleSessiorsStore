@@ -33,12 +33,12 @@ const ProductPage = () => {
     dispatch(getAllReviews()).then((res)=>{
       console.log(res);
     })
-
+    
     
   },[])
 
   
-
+  useEffect(() => { window.scrollTo(0, 0); }, []);
 
   // State management
   const [selectedVariant, setSelectedVariant] = useState("");
@@ -237,7 +237,7 @@ const ProductPage = () => {
         <div className="sticky top-4 space-y-4">
           <div className="w-full relative bg-gray-100 rounded-lg overflow-hidden">
             <img
-              src={sku?.image?.url}
+              src={sku?.image?.url||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg6ffwDefZkrv7c18_aw6eiJQl0Y99Re33wg&s"}
               alt="Product"
               className="w-full h-auto object-cover"
               style={{ maxHeight: '450px' }}

@@ -204,7 +204,7 @@ const AddProduct = () => {
       if (!basicDetails.basePrice || basicDetails.basePrice<0)
         newErrors.basePrice = "Base price is required and should be greater then zero";
       if (!basicDetails.category) newErrors.category = "Category is required";
-      if (basicDetails.discount<0) newErrors.discount = "Discount cannot be less then zero";
+      if (basicDetails.discount<0 || basicDetails.discount>100) newErrors.discount = "Discount cannot be less then zero";
       if (!basicDetails.shippingFee||basicDetails.shippingFee<0) newErrors.shippingFee = "Shipping fee cannot be less be then zero";
       if (!(basicDetails.sizes.length||basicDetails.colors.length||basicDetails.variants.length)) newErrors.variants = "At Least 1 color or 1 size or 1 varient is required";
       /*if (basicDetails.colors.length === 0)
@@ -386,7 +386,8 @@ const AddProduct = () => {
                     className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500
             ${errors.discount ? "border-red-500" : ""}`}
                     value={basicDetails.discount}
-                    min={1}
+                    min={0}
+                    max={100}
                     onChange={(e) =>
                       setBasicDetails({
                         ...basicDetails,
@@ -427,10 +428,11 @@ const AddProduct = () => {
                     Shipping Fee 
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500
             ${errors.shippingFee ? "border-red-500" : ""}`}
                     value={basicDetails.shippingFee}
+                    min={0}
                     onChange={(e) =>
                       setBasicDetails({
                         ...basicDetails,
@@ -502,7 +504,7 @@ const AddProduct = () => {
                         if (newColor) {
                           setBasicDetails({
                             ...basicDetails,
-                            colors: [...basicDetails.colors, newColor],
+                            colors: [...basicDetails.colors, newColor.replace(/\s+/g, '')],
                           });
                           setNewColor("");
                         }
@@ -560,7 +562,7 @@ const AddProduct = () => {
                         if (newSize) {
                           setBasicDetails({
                             ...basicDetails,
-                            sizes: [...basicDetails.sizes, newSize],
+                            sizes: [...basicDetails.sizes, newSize.replace(/\s+/g, '')],
                           });
                           setNewSize("");
                         }

@@ -4,12 +4,14 @@ import { IoMdKey } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../redux/authSlice";
+import toast from "react-hot-toast";
 
 function Register() {
   const dispatch = useDispatch();
+  let navigate=useNavigate();
   let [showPass, setShowPass] = useState(false);
 
   // data to send to backend
@@ -27,6 +29,10 @@ function Register() {
     };
     dispatch(registerUser(formData)).then((data) => {
       console.log(data);
+      if (data?.payload?.success) {
+        toast.success(data?.payload?.message+" please login now")
+        navigate("/login")
+      }
     });
   };
 

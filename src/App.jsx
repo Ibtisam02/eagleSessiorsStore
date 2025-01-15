@@ -38,6 +38,9 @@ import Success from './pages/Success';
 import Cancle from './pages/Cancle';
 import NotFoundPage from './pages/FourOFour';
 import "./App.css"
+import PrivacyPolicy from './pages/PrivacyP';
+import ShippingPolicy from './pages/ShippingP';
+import RefundPolicy from './pages/RefundP';
 
 function App() {
   let dispatch=useDispatch();
@@ -86,6 +89,9 @@ function App() {
       <Route  path="cancel" element={<Cancle />} />
       <Route  path="success" element={<Success />} />
       <Route  path="reviews" element={<Reviews />} />
+      <Route  path="privacy-policy" element={<PrivacyPolicy />} />
+      <Route  path="shipping-policy" element={<ShippingPolicy />} />
+      <Route  path="refund-policy" element={<RefundPolicy />} />
       <Route  path="*" element={<NotFoundPage />} />
     </Route>
     <Route path="/admin" element={<CheckAuth isAuthenticated={isAuthenticated} user={user}><AdminLayout/></CheckAuth>}>

@@ -101,7 +101,7 @@ dispatch(getLogo()).then((res)=>{
                 <span className="text-white">ders</span>
               </div>*/}
               <Link to={"/"}>
-              <img src={logo} alt="Logo" className="h-[100px]" />
+              <img src={logo||"https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"} alt="Logo" className="h-[100px]" />
               </Link>
 
               <div className="hidden lg:flex lg:items-center lg:space-x-1 ml-8">
@@ -221,7 +221,7 @@ dispatch(getLogo()).then((res)=>{
           ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex justify-between items-center p-6 border-b border-white/10">
-        <Link to={"/"}><img src={logo} alt="Logo" className="h-[100px]" /></Link>
+        <Link to={"/"}><img src={logo||"https://www.adaptivewfs.com/wp-content/uploads/2020/07/logo-placeholder-image.png"} alt="Logo" className="h-[100px]" /></Link>
           <button
             onClick={() => setIsOpen(false)}
             className="text-white hover:rotate-90 transition-all duration-300"

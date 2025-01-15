@@ -100,7 +100,9 @@ dispatch(getLogo()).then((res)=>{
                 <span className="text-red-500">leTra</span>
                 <span className="text-white">ders</span>
               </div>*/}
+              <Link to={"/"}>
               <img src={logo} alt="Logo" className="h-[100px]" />
+              </Link>
 
               <div className="hidden lg:flex lg:items-center lg:space-x-1 ml-8">
                 {navItems.map((item, index) => (
@@ -219,7 +221,7 @@ dispatch(getLogo()).then((res)=>{
           ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex justify-between items-center p-6 border-b border-white/10">
-        <img src={logo} alt="Logo" className="h-[100px]" />
+        <Link to={"/"}><img src={logo} alt="Logo" className="h-[100px]" /></Link>
           <button
             onClick={() => setIsOpen(false)}
             className="text-white hover:rotate-90 transition-all duration-300"

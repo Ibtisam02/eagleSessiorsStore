@@ -87,10 +87,7 @@ function Login() {
             />
           </div>
 
-          {/* Forgot Password */}
-          <p className="w-full text-left underline text-sm hover:text-gray-500 transition duration-300">
-            <Link to={"/login/forgetPassword"}>Forgot Password?</Link>
-          </p>
+          
 
           {/* Submit Button */}
           <button

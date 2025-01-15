@@ -32,7 +32,7 @@ import { Link } from 'react-router-dom';
             <Link
             to={`/productsBYCatagory/${category.title}`} 
               key={category.title} 
-              className="group cursor-pointer opacity-0 border border-black"
+              className="group cursor-pointer opacity-0 "
               style={{
                 animation: `fade-in-up 0.6s ease-out ${index * 0.2}s forwards`
               }}

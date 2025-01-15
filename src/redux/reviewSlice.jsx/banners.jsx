@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const initialState = {
   isLoading: false,
@@ -20,7 +21,7 @@ export const addBannerAdmin = createAsyncThunk(
         return response.data;
       } catch (error) {
         console.log(error);
-        
+        return toast.error(error.response.data.message)
       }
     }
   );
@@ -34,7 +35,7 @@ export const deleteBannerAdmin = createAsyncThunk(
         return response.data;
       } catch (error) {
         console.log(error);
-        
+        toast.error(error?.response?.data?.message)
       }
     }
   );

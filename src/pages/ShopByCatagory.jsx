@@ -121,7 +121,7 @@ const ShopByCategory = () => {
           </div>
         </div>
       </div>
-      {isLoading? <div className="sweet-loading w-screen h-screen flex justify-center items-center">
+      {isLoading? <div className="sweet-loading  h-screen flex justify-center items-center">
       <MoonLoader
       color="#ff0000"
       cssOverride={{}}

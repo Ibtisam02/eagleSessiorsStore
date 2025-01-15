@@ -8,11 +8,11 @@ import {
 } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { createProduct } from "../../redux/productSlice/CreateProductSlic";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
   let dispatch=useDispatch();
   const [activeTab, setActiveTab] = useState(0);
-  const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [errors, setErrors] = useState({});
   let {isLoading}=useSelector((state)=>state.createProduct)
 
@@ -21,6 +21,7 @@ const AddProduct = () => {
     name: "",
     discount:"",
     brand:"",
+    shippingFee:"",
     basePrice: "",
     category: "",
     colors: [],
@@ -200,9 +201,12 @@ const AddProduct = () => {
 
     if (tabIndex === 0) {
       if (!basicDetails.name) newErrors.name = "Name is required";
-      if (!basicDetails.basePrice)
-        newErrors.basePrice = "Base price is required";
+      if (!basicDetails.basePrice || basicDetails.basePrice<0)
+        newErrors.basePrice = "Base price is required and should be greater then zero";
       if (!basicDetails.category) newErrors.category = "Category is required";
+      if (basicDetails.discount<0) newErrors.discount = "Discount cannot be less then zero";
+      if (!basicDetails.shippingFee||basicDetails.shippingFee<0) newErrors.shippingFee = "Shipping fee cannot be less be then zero";
+      if (!(basicDetails.sizes.length||basicDetails.colors.length||basicDetails.variants.length)) newErrors.variants = "At Least 1 color or 1 size or 1 varient is required";
       /*if (basicDetails.colors.length === 0)
         newErrors.colors = "At least one color is required";
       if (basicDetails.sizes.length === 0)
@@ -217,7 +221,7 @@ const AddProduct = () => {
 
     if (tabIndex === 1) {
       const skuErrors = skus.some(
-        (sku) => !sku.price || !sku.stock || !sku.image
+        (sku) => !sku.price || sku.stock<0 || !sku.image
       );
       if (skuErrors) newErrors.skus = "All SKU fields are required";
     }
@@ -280,6 +284,7 @@ const AddProduct = () => {
       formData.append("name",basicDetails.name);
       formData.append("brand",basicDetails.brand);
       formData.append("basePrice",basicDetails.basePrice);
+      formData.append("shippingFee",basicDetails.shippingFee);
       formData.append("category",basicDetails.category);
       formData.append("colors",JSON.stringify(basicDetails.colors));
       formData.append("sizes",JSON.stringify(basicDetails.sizes));
@@ -289,8 +294,10 @@ const AddProduct = () => {
       formData.append("skus",JSON.stringify(skuss));
       
       dispatch(createProduct(formData)).then((res)=>{
-        console.log(res);
-        
+        if (res.payload.success) {
+          
+          toast.success(res.payload.message)
+        }
       })
     }
   }
@@ -356,6 +363,7 @@ const AddProduct = () => {
                     className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500
             ${errors.basePrice ? "border-red-500" : ""}`}
                     value={basicDetails.basePrice}
+                    min={1}
                     onChange={(e) =>
                       setBasicDetails({
                         ...basicDetails,
@@ -378,6 +386,7 @@ const AddProduct = () => {
                     className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500
             ${errors.discount ? "border-red-500" : ""}`}
                     value={basicDetails.discount}
+                    min={1}
                     onChange={(e) =>
                       setBasicDetails({
                         ...basicDetails,
@@ -413,6 +422,28 @@ const AddProduct = () => {
                     </p>
                   )}
                 </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Shipping Fee 
+                  </label>
+                  <input
+                    type="text"
+                    className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500
+            ${errors.shippingFee ? "border-red-500" : ""}`}
+                    value={basicDetails.shippingFee}
+                    onChange={(e) =>
+                      setBasicDetails({
+                        ...basicDetails,
+                        shippingFee: e.target.value,
+                      })
+                    }
+                  />
+                  {errors.shippingFee && (
+                    <p className="mt-1 text-sm text-red-500">
+                      {errors.shippingFee}
+                    </p>
+                  )}
+                </div>
               </div>
 
               {/* Category Selection */}
@@ -421,40 +452,10 @@ const AddProduct = () => {
                   <label className="block text-sm font-medium text-gray-700">
                     Category*
                   </label>
-                  <button
-                    type="button"
-                    className="inline-flex items-center px-3 py-1 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200"
-                    onClick={() => setShowCategoryForm(!showCategoryForm)}
-                  >
-                    <FaPlus className="mr-2" />
-                    Add New Category
-                  </button>
+                  
                 </div>
 
-                {showCategoryForm ? (
-                  <div className="mt-2 flex gap-2">
-                    <input
-                      type="text"
-                      className="flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                      value={newCategory}
-                      onChange={(e) => setNewCategory(e.target.value)}
-                      placeholder="Enter new category"
-                    />
-                    <button
-                      type="button"
-                      className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
-                      onClick={() => {
-                        if (newCategory) {
-                          setCategories([...categories, newCategory]);
-                          setNewCategory("");
-                          setShowCategoryForm(false);
-                        }
-                      }}
-                    >
-                      Add
-                    </button>
-                  </div>
-                ) : (
+                
                   <select
                     className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500
             ${errors.category ? "border-red-500" : ""}`}
@@ -473,7 +474,7 @@ const AddProduct = () => {
                       </option>
                     ))}
                   </select>
-                )}
+                
                 {errors.category && (
                   <p className="mt-1 text-sm text-red-500">{errors.category}</p>
                 )}

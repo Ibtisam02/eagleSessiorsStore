@@ -20,7 +20,7 @@ export const addTestimonialAdmin = createAsyncThunk(
         return response.data;
       } catch (error) {
         console.log(error);
-        
+        return toast.error(error.response.data.message)
       }
     }
   );

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const initialState = {
   isLoading: false,
@@ -19,6 +20,7 @@ export const createProduct = createAsyncThunk(
           });
         return response.data;
       } catch (error) {
+        return toast.error(error.response.data.message)
         rejectWithValue(error);
       }
     }

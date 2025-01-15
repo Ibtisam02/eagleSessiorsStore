@@ -37,8 +37,7 @@ console.log(process.env.STRIPE_PUBLISHABLE_KEY);
     }
   }, [orders, dispatch]);
 
-  const SHIPPING_FEE = 50;
-  const TAX_RATE = 0.1;
+
 
   const calculateTotal = () => {
     if (!cart || cart?.length === 0) return 0;
@@ -287,18 +286,12 @@ console.log(process.env.STRIPE_PUBLISHABLE_KEY);
                   })}
 
                   <div className="space-y-3 pt-4">
-                    <div className="flex justify-between text-gray-600">
-                      <span>Subtotal</span>
-                      <span>£{calculateTotal().toLocaleString()}</span>
-                    </div>
-                    <div className="flex justify-between text-gray-600">
-                      <span>Shipping Fee</span>
-                      <span>£{SHIPPING_FEE.toFixed(2)}</span>
-                    </div>
+                   
+                    
                     
                     <div className="flex justify-between font-bold text-lg pt-4 border-t">
-                      <span>Total</span>
-                      <span>£{(calculateTotal()+SHIPPING_FEE).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                      <span>Subtotal</span>
+                      <span>£{(calculateTotal()).toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
                     </div>
                   </div>
 

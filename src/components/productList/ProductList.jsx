@@ -21,7 +21,7 @@ const ProductList = ({products,isLoading}) => {
       /> 
 </div>:<div className="mt-14 px-10">
         <h1 className="text-4xl font-bold mb-12 tracking-wide opacity-0 animate-fade-in-up">
-          BEST SALERS
+        Scissors
         </h1>
       <div className='flex justify-around items-center flex-wrap gap-y-5'>
         {products?.map((product, index) => (

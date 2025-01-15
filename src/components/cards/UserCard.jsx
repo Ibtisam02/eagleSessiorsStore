@@ -8,7 +8,7 @@ const UserCard = ({
   image2 = "/api/placeholder/400/400",
   title = "Product Title",
   rating = 5,
-  reviews = 10,
+  reviews = 1,
   originalPrice = "53,500.00",
   salePrice = "21,400.00",
   isSpecial = true,
@@ -100,30 +100,33 @@ const UserCard = ({
 
       {/* Product Info */}
       <div className="flex flex-col flex-grow space-y-1">
-        <h3 className="text-xs font-medium text-gray-900 truncate group-hover:underline cursor-pointer">
-          {title}
+        <h3 className="text-xs font-medium text-gray-900 truncate group-hover:underline  cursor-pointer">
+          {title.length>57?title.slice(0,54)+"...":title}
         </h3>
 
         {/* Tooltip for full title */}
         <div className="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -top-2 left-0 right-0 -translate-y-full bg-black text-white text-xs p-2 rounded-md z-20 pointer-events-none">
-          {title}
+          {title.length>57?title.slice(0,54)+"...":title}
         </div>
 
-        {/* Rating */}
-        <div className="flex items-center">
-          <div className="flex mr-1">{renderStars()}</div>
-          <span className="text-xs text-gray-500">({reviews})</span>
-        </div>
+        {rating>0?<div className="flex items-center space-x-2">
+              
+              {[...new Array(Math.ceil(rating)).keys()].map((star) => (
+                <span key={star} className="text-yellow-400 text-xl">★</span>
+              ))}
+              <span className="text-sm text-gray-600">({reviews} reviews)</span>
+            </div>:null}
+        
 
         {/* Pricing */}
         <div className="flex flex-col">
           <p className="text-xs text-gray-500 line-through">
-            Rs.{originalPrice} {currency}
+          {currency} {originalPrice.toLocaleString()} 
           </p>
           <div className="flex items-baseline">
             <span className="text-xs font-medium">From </span>
             <p className="ml-1 text-sm font-semibold">
-              Rs.{salePrice} {currency}
+            {currency} {salePrice.toLocaleString()} 
             </p>
           </div>
         </div>

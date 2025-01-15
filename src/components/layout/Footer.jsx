@@ -31,8 +31,8 @@ const Footer = () => {
             <h3 className="font-medium">Eagle Scissors</h3>
             <div>
               <p className="font-medium">Office hours:</p>
-              <p>Monday - Friday: 9AM - 5PM</p>
-              <p>Saturday: 8AM - 1PM</p>
+              <p>Monday - Saturday: 8AM - 8PM</p>
+              <p>Sunday: 8AM - 4PM</p>
             </div>
           </div>
 

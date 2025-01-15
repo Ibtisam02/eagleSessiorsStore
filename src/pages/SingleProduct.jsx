@@ -9,6 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { getSingleSku } from '../redux/productSlice/getSingleSkuSlice';
 import { getAllReviews } from '../redux/reviewSlice.jsx/getAllReviews';
 import { MoonLoader } from 'react-spinners';
+import toast from 'react-hot-toast';
 
 const ProductPage = () => {
   let {id}=useParams();
@@ -61,7 +62,7 @@ const ProductPage = () => {
 
   useEffect(()=>{
     
-    dispatch(getSingleSku(`productId=${id}&skuId=${skuId}`)).then((res)=>{
+    dispatch(getSingleSku(`productId=${id}&skuId=${skuId.replace(/\s+/g, '')}`)).then((res)=>{
       console.log(res);
       
     })
@@ -179,8 +180,7 @@ const ProductPage = () => {
   
       // Update localStorage with the modified order array
       localStorage.setItem("order", JSON.stringify(order));
-  
-      console.log("Cart updated:", order);
+      toast.success("Product Added to Cart.")
     } catch (error) {
       console.error("Failed to update the cart:", error);
     }
@@ -213,7 +213,7 @@ const ProductPage = () => {
   
       // Update localStorage with the modified order array
       localStorage.setItem("order", JSON.stringify(order));
-  
+      toast.success("Product Added to Cart.")
       navigate("/checkout")
     } catch (error) {
       console.error("Failed to update the cart:", error);
@@ -221,178 +221,182 @@ const ProductPage = () => {
   };
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      {isLoading? <div className="sweet-loading w-screen h-screen flex justify-center items-center">
+  {isLoading ? (
+    <div className="sweet-loading w-screen h-screen flex justify-center items-center">
       <MoonLoader
-      color="#ff0000"
-      cssOverride={{}}
-      loading={isLoading}
-      size={60}
-      speedMultiplier={2}
-      /> 
-</div>:<div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Image Section */}
-        <div className="lg:col-span-2">
-          <div className="sticky top-4 space-y-4">
-            {/* Main Image */}
-            <div className="aspect-square w-full relative bg-gray-100 rounded-lg overflow-hidden">
-              <img
-                src={sku?.image?.url}
-                alt="Product"
-                className="w-full h-full object-cover"
-              />
-            </div>
+        color="#ff0000"
+        cssOverride={{}}
+        loading={isLoading}
+        size={60}
+        speedMultiplier={2}
+      />
+    </div>
+  ) : (
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="lg:col-span-2">
+        <div className="sticky top-4 space-y-4">
+          <div className="w-full relative bg-gray-100 rounded-lg overflow-hidden">
+            <img
+              src={sku?.image?.url}
+              alt="Product"
+              className="w-full h-auto object-cover"
+              style={{ maxHeight: '450px' }}
+            />
+          </div>
+          <div className='flex gap-x-3 overflow-x-scroll'>
 
-            {/* SKU Thumbnails */}
-            
+            {skus?.map((sku)=>{
+              return(
+                <div onClick={()=>setSkuId(sku?.skuId)} className='border border-black'>
+        <img src={sku?.image?.url} className='h-20' alt="" />
+
+            </div>
+              )
+            })}
+
           </div>
         </div>
+      </div>
 
-        {/* Product Details */}
-        <div className="space-y-6">
-          {/* Rating and Title */}
-          <div>
-            {product?.rating>0?<div className="flex items-center space-x-2">
-              
-              {[...new Array(product?.rating).keys()].map((star) => (
+      <div className="space-y-6">
+        <div>
+          {product?.rating > 0 ? (
+            <div className="flex items-center space-x-2">
+              {[...new Array(Math.ceil(product?.rating)).keys()].map((star) => (
                 <span key={star} className="text-yellow-400 text-xl">★</span>
               ))}
               <span className="text-sm text-gray-600">({product?.numberOfReviews} reviews)</span>
-            </div>:null}
-            <h1 className="text-2xl font-bold mt-2">
-              {product?.name}
-            </h1>
-            <p className="text-xl mt-2">
-            £ {sku?.priceAfterDiscount?.toLocaleString()}
-            </p>
-            {sku?.price!==sku?.priceAfterDiscount?<p className="text-lg mt-2 line-through">
-            £ {sku?.price?.toLocaleString()}
-            </p>:null}
-            <p className="text-sm text-gray-600 mt-1">
-              SKU: {skuId} | Stock: {sku?.stock}
-            </p>
+            </div>
+          ) : null}
+          <h1 className="text-2xl font-bold mt-2 break-words">
+            {product?.name}
+          </h1>
+          <p className="text-xl mt-2">£ {sku?.priceAfterDiscount?.toLocaleString()}</p>
+          {sku?.price !== sku?.priceAfterDiscount ? (
+            <p className="text-lg mt-2 line-through">£ {sku?.price?.toLocaleString()}</p>
+          ) : null}
+          <p className="text-sm text-gray-600 mt-1">SKU: {skuId} | Stock: {sku?.stock}</p>
+        </div>
+
+        <div className="space-y-6">
+          <div>
+            <h3 className="font-medium mb-3">Style</h3>
+            <div className="grid grid-cols-2 gap-2">
+              {product?.varients?.map((varient) => (
+                <button
+                  key={varient?._id}
+                  onClick={() => setSelectedVariant(varient?.varient)}
+                  className={`px-4 py-2 rounded-full border transition-all ${
+                    selectedVariant === varient?.varient
+                      ? 'border-black bg-black text-white'
+                      : 'border-gray-300 hover:border-black'
+                  }`}
+                >
+                  {varient?.varient}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Product Options */}
-          <div className="space-y-6">
-            {/* Variants */}
+          {product?.colors?.length > 0 ? (
             <div>
-              <h3 className="font-medium mb-3">Style</h3>
-              <div className="grid grid-cols-2 gap-2">
-                {product?.varients?.map((varient) => (
-                  <button
-                    key={varient?._id}
-                    onClick={() => setSelectedVariant(varient?.varient)}
-                    className={`px-4 py-2 rounded-full border transition-all ${
-                      selectedVariant === varient?.varient
-                        ? 'border-black bg-black text-white'
-                        : 'border-gray-300 hover:border-black'
-                    }`}
-                  >
-                    {varient?.varient}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Colors */}
-            {product?.colors?.length>0?<div>
               <h3 className="font-medium mb-3">Color</h3>
               <div className="flex gap-4">
                 {product?.colors?.map((color) => (
                   <ColorOption key={color?._id} color={color?.color} />
                 ))}
               </div>
-            </div>:null}
+            </div>
+          ) : null}
 
-
-            {/* Sizes */}
-            {product?.sizes?.length>0?<div>
+          {product?.sizes?.length > 0 ? (
+            <div>
               <h3 className="font-medium mb-3">Sizes</h3>
               <div className="flex gap-4">
                 {product?.sizes?.map((size) => (
                   <SizeOption key={size?._id} size={size?.size} />
                 ))}
               </div>
-            </div>:null}
+            </div>
+          ) : null}
 
-            {/* Quantity */}
-            <div>
-              <h3 className="font-medium mb-3">Quantity</h3>
-              <div className="flex items-center border rounded-lg w-32">
-                <button
-                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-3 py-2 border-r hover:bg-gray-50"
-                >
-                  -
-                </button>
-                <input
-                  type="number"
-                  value={quantity}
-                  onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
-                  className="w-full text-center focus:outline-none"
-                  max={sku?.stock}
-                />
-                <button
-                  onClick={() => setQuantity(Math.min(sku?.stock || 1, quantity + 1))}
-                  className="px-3 py-2 border-l hover:bg-gray-50"
-                >
-                  +
-                </button>
-              </div>
+          <div>
+            <h3 className="font-medium mb-3">Quantity</h3>
+            <div className="flex items-center border rounded-lg w-32">
+              <button
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                className="px-3 py-2 border-r hover:bg-gray-50"
+              >
+                -
+              </button>
+              <input
+                type="number"
+                value={quantity}
+                onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+                className="w-full text-center focus:outline-none"
+                max={sku?.stock}
+              />
+              <button
+                onClick={() => setQuantity(Math.min(sku?.stock || 1, quantity + 1))}
+                className="px-3 py-2 border-l hover:bg-gray-50"
+              >
+                +
+              </button>
             </div>
           </div>
-
-          {/* Add to Cart Buttons */}
-          <div className="space-y-3">
-            <button 
-            onClick={addToCart}
-              className="w-full py-3 px-4 border border-black bg-black text-white rounded-lg hover:bg-gray-900 transition-colors disabled:bg-gray-300 disabled:border-gray-300"
-              disabled={!sku?.stock}
-            >
-              Add to Cart
-            </button>
-            <button 
-            onClick={buyNowHandler}
-              className="w-full py-3 px-4 border border-black rounded-lg hover:bg-gray-50 transition-colors disabled:border-gray-300 disabled:text-gray-300"
-              disabled={!sku?.stock}
-            >
-              Buy Now
-            </button>
-          </div>
-
-          {/* Product Information Accordions */}
-          <div className="space-y-0">
-            <Accordion title="Product Description" id="description">
-              <div className="space-y-4">
-                {product?.description}
-              </div>
-            </Accordion>
-
-            <Accordion title="Shipping Information" id="shipping">
-              <p>Free worldwide shipping on all orders during our sale period.</p>
-              <p>Please allow for customs clearance time variations in delivery estimates.</p>
-            </Accordion>
-
-            <Accordion title="Return Policy" id="returns">
-              <p>We offer a money back guarantee on all purchases. If you're unhappy with your purchase, please contact us via email for return assistance.</p>
-            </Accordion>
-
-            <Accordion title="Scissor Care" id="care">
-              <p>Check and adjust scissor tension after each use to maintain optimal performance.</p>
-              <ul className="list-disc pl-4 mt-2 space-y-1">
-                <li>Clean after each use</li>
-                <li>Store in provided case</li>
-                <li>Regular maintenance recommended</li>
-              </ul>
-            </Accordion>
-          </div>
         </div>
-      </div>}
 
-      {reviews?.length>0?<ReviewSection Reviews={reviews}/>:null}
-      <ProductList/>
-      <ContactForm/>
+        <div className="space-y-3">
+          <button 
+          onClick={addToCart}
+            className="w-full py-3 px-4 border border-black bg-black text-white rounded-lg hover:bg-gray-900 transition-colors disabled:bg-gray-300 disabled:border-gray-300"
+            disabled={!sku?.stock}
+          >
+            Add to Cart
+          </button>
+          <button 
+          onClick={buyNowHandler}
+            className="w-full py-3 px-4 border border-black rounded-lg hover:bg-gray-50 transition-colors disabled:border-gray-300 disabled:text-gray-300"
+            disabled={!sku?.stock}
+          >
+            Buy Now
+          </button>
+        </div>
+
+        <div className="space-y-0">
+          <Accordion title="Product Description" id="description">
+            <div className="space-y-4">
+              {product?.description}
+            </div>
+          </Accordion>
+
+          <Accordion title="Shipping Information" id="shipping">
+            <p>Free worldwide shipping on all orders during our sale period.</p>
+            <p>Please allow for customs clearance time variations in delivery estimates.</p>
+          </Accordion>
+
+          <Accordion title="Return Policy" id="returns">
+            <p>We offer a money back guarantee on all purchases. If you're unhappy with your purchase, please contact us via email for return assistance.</p>
+          </Accordion>
+
+          <Accordion title="Scissor Care" id="care">
+            <p>Check and adjust scissor tension after each use to maintain optimal performance.</p>
+            <ul className="list-disc pl-4 mt-2 space-y-1">
+              <li>Clean after each use</li>
+              <li>Store in provided case</li>
+              <li>Regular maintenance recommended</li>
+            </ul>
+          </Accordion>
+        </div>
+      </div>
     </div>
+  )}
+
+  {reviews?.length > 0 ? <ReviewSection Reviews={reviews} /> : null}
+  <ProductList />
+  <ContactForm />
+</div>
+
   );
 };
 

@@ -104,7 +104,7 @@ const Orders = () => {
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          {orders?.length>0?<tbody className="divide-y divide-gray-200">
             {orders?.map((order) => (
               <tr
                 key={order?._id}
@@ -151,7 +151,7 @@ const Orders = () => {
                 </td>
               </tr>
             ))}
-          </tbody>
+          </tbody>:<p>Place an Order Now!</p>}
         </table>
       </div>}
     </div>
@@ -244,12 +244,12 @@ const Orders = () => {
                         <div className="flex items-center gap-4 w-full md:w-auto">
                           <img
                             src={item?.image}
-                            alt={item?.name}
+                            alt={item?.name.length>105?item.name.slice(0,105)+"...":item?.name}
                             className="w-16 h-16 rounded-lg object-cover shrink-0"
                           />
                           <div className="min-w-0 flex-1">
                             <h4 className="font-medium truncate">
-                              {item?.name}
+                              {item?.name.length>105?item.name.slice(0,105)+"...":item?.name}
                             </h4>
                             <p className="text-sm text-gray-500">
                               Category: {item?.catagory}

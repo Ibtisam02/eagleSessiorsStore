@@ -193,10 +193,12 @@ function Cart() {
                     </p>
                   </div>
                 </div>
+                
               </div>
             </div>
           ))}
         </div>
+          <input onClick={()=>{localStorage.removeItem("order");setChange(!change);toast.success("Cart Cleared Successfully!")}} className="mt-4 cursor-pointer py-3 px-4 bg-black hover:bg-primary text-white rounded-lg transition-colors" type="button" value="Clear Cart" />
 
         {cart?.length > 0 ? (
           <div className="mt-8 bg-white rounded-lg p-6 shadow-sm">
@@ -215,6 +217,7 @@ function Cart() {
             <p className="text-center text-sm text-gray-500 mt-4">
               Shipping and taxes calculated at checkout
             </p>
+            
           </div>
         ) : (
           <div className="text-center py-12">

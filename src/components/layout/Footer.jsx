@@ -7,8 +7,8 @@ const Footer = () => {
     { title: "Privacy Policy", href: "/privacy-policy" },
     { title: "Shipping Policy", href: "/shipping-policy" },
     { title: "Refund policy", href: "/refund-policy" },
-    { title: "Terms of Service", href: "#" },
-    { title: "Do not sell or share my personal information", href: "#" },
+    { title: "Terms of Service", href: "terms-of-service" },
+    { /*title: "Do not sell or share my personal information", href: "#" */},
   ];
 
   return (
@@ -70,7 +70,7 @@ const Footer = () => {
             <div className="flex flex-wrap items-center gap-4 text-sm">
               <Link to={"/refund-policy"} className="hover:text-gray-300">Refund policy</Link>
               <Link to={"/privacy-policy"} href="/privacy-policy" className="hover:text-gray-300">Privacy policy</Link>
-              <Link to={"/-policy"}  className="hover:text-gray-300">Terms of service</Link>
+              <Link to={"/terms-of-service"}  className="hover:text-gray-300">Terms of service</Link>
               <Link to={"/shipping-policy"}  className="hover:text-gray-300">Shipping policy</Link>
             </div>
           </div>

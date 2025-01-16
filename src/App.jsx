@@ -41,6 +41,7 @@ import "./App.css"
 import PrivacyPolicy from './pages/PrivacyP';
 import ShippingPolicy from './pages/ShippingP';
 import RefundPolicy from './pages/RefundP';
+import TermsOfService from './pages/TremsOfS';
 
 function App() {
   let dispatch=useDispatch();
@@ -92,6 +93,7 @@ function App() {
       <Route  path="privacy-policy" element={<PrivacyPolicy />} />
       <Route  path="shipping-policy" element={<ShippingPolicy />} />
       <Route  path="refund-policy" element={<RefundPolicy />} />
+      <Route  path="terms-of-service" element={<TermsOfService />} />
       <Route  path="*" element={<NotFoundPage />} />
     </Route>
     <Route path="/admin" element={<CheckAuth isAuthenticated={isAuthenticated} user={user}><AdminLayout/></CheckAuth>}>

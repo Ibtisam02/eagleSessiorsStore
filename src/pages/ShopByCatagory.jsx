@@ -16,7 +16,7 @@ const ShopByCategory = () => {
 
   let dispatch=useDispatch();
   let {isLoading,products}=useSelector((state)=>state.getAllProducts)
-
+ useEffect(() => { window.scrollTo(0, 0); }, []);
 
  /* useEffect(() => {
     
@@ -34,7 +34,7 @@ const ShopByCategory = () => {
 
 
   useEffect(() => {
-    let obj={};
+    let obj=null;
        if (catagory==="CUTTING & THINNING SCISSORS") {
          obj={
           "sort":sort,
@@ -51,6 +51,12 @@ const ShopByCategory = () => {
         obj={
           "sort":sort,
           "catagory":"Accessories"
+        }
+       }
+       else if (catagory==="PETS GROOMING SCISSORS") {
+        obj={
+          "sort":sort,
+          "catagory":"Pets"
         }
        }
         console.log(obj);

@@ -10,6 +10,7 @@ import { getAllProducts } from '../redux/productSlice/getAllProducts'
 import { Link } from 'react-router-dom'
 
 function Home() {
+   useEffect(() => { window.scrollTo(0, 0); }, []);
   let dispatch=useDispatch();
   let {isLoading,products}=useSelector((state)=>state.getAllProducts)
   useEffect(()=>{
@@ -21,12 +22,15 @@ function Home() {
     <div>
       <BannerSlider/>
       <Catagory/>
+      <div className='px-4'>
       <ProductList products={products}/>
+      </div>
       <div className="w-full flex justify-center mt-5">
       <Link to={"/productsBYCatagory/CUTTING%20&%20THINNING%20SCISSORS"} className="bg-black text-white px-8 py-3 rounded-full font-medium transform transition-transform hover:scale-105 active:scale-95">
               View More
             </Link>
       </div>
+      
       <HeroSection/>
       <ContactForm/>
     </div>

@@ -5,6 +5,7 @@ import { MoonLoader } from "react-spinners";
 
 const TestimonialImages = () => {
   let dispatch = useDispatch();
+   useEffect(() => { window.scrollTo(0, 0); }, []);
   let {isLoading, testimonials } = useSelector((state) => state.getAllTestimonialss);
   console.log(testimonials);
   

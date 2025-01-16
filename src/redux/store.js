@@ -18,6 +18,7 @@ import placeOrderReducer from "./orderSice/placeOrderSlice"
 import getLogoReducer from "./reviewSlice.jsx/getLogo"
 import stripePaywithCardReducer from "./orderSice/stripePayment"
 import updateProductReducer from "./productSlice/updateProductSlice"
+import toggleReducer from "./cartSlice/addToCartToggle"
 
 
  const store = configureStore({
@@ -40,7 +41,8 @@ import updateProductReducer from "./productSlice/updateProductSlice"
         placeOrder:placeOrderReducer,
         getLogoAll:getLogoReducer,
         payWithStripeCard:stripePaywithCardReducer,
-        updateProduct:updateProductReducer
+        updateProduct:updateProductReducer,
+        addToCartToggle:toggleReducer
     }
 })
 

@@ -50,6 +50,7 @@ const AddProduct = () => {
     "Scissors",
     "Razors",
     "Accessories",
+    "Pets"
   ]);
 
   const variants = ["Cutting", "Thinning", "Set", "Set With Case"];

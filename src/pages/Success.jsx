@@ -2,6 +2,7 @@ import React from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 
 const SuccessPage = () => {
+   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
       {/* Success Card */}

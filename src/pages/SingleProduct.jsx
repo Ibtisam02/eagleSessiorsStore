@@ -10,18 +10,18 @@ import { getSingleSku } from '../redux/productSlice/getSingleSkuSlice';
 import { getAllReviews } from '../redux/reviewSlice.jsx/getAllReviews';
 import { MoonLoader } from 'react-spinners';
 import toast from 'react-hot-toast';
+import { toggle } from '../redux/cartSlice/addToCartToggle';
 
 const ProductPage = () => {
   let {id}=useParams();
   let navigate=useNavigate()
-  console.log(id);
+  
   
   let dispatch=useDispatch();
-  let {product,skus}=useSelector((state)=>state.getSingleProduct)
+  let {isProductLoading,product,skus}=useSelector((state)=>state.getSingleProduct)
   let {isLoading,sku}=useSelector((state)=>state.getSingleSku)
   let {reviews}=useSelector((state)=>state.getAllReviewsUser)
-  console.log(reviews);
-  
+  console.log(skus?.[0]?.image?.url);
   useEffect(()=>{
     dispatch(getSingleProduct(id)).then((res)=>{
       console.log(res);
@@ -181,6 +181,7 @@ const ProductPage = () => {
       // Update localStorage with the modified order array
       localStorage.setItem("order", JSON.stringify(order));
       toast.success("Product Added to Cart.")
+      dispatch(toggle())
     } catch (error) {
       console.error("Failed to update the cart:", error);
     }
@@ -214,6 +215,7 @@ const ProductPage = () => {
       // Update localStorage with the modified order array
       localStorage.setItem("order", JSON.stringify(order));
       toast.success("Product Added to Cart.")
+      dispatch(toggle())
       navigate("/checkout")
     } catch (error) {
       console.error("Failed to update the cart:", error);
@@ -221,8 +223,8 @@ const ProductPage = () => {
   };
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-  {isLoading ? (
-    <div className="sweet-loading w-screen h-screen flex justify-center items-center">
+  {isProductLoading||isLoading   ? (
+    <div className="sweet-loading  h-screen flex justify-center items-center">
       <MoonLoader
         color="#ff0000"
         cssOverride={{}}
@@ -237,7 +239,7 @@ const ProductPage = () => {
         <div className="sticky top-4 space-y-4">
           <div className="w-full relative bg-gray-100 rounded-lg overflow-hidden">
             <img
-              src={sku?.image?.url||"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSg6ffwDefZkrv7c18_aw6eiJQl0Y99Re33wg&s"}
+              src={sku?.image?.url||skus?.[0]?.image?.url}
               alt="Product"
               className="w-full h-auto object-cover"
               style={{ maxHeight: '450px' }}
@@ -247,7 +249,7 @@ const ProductPage = () => {
 
             {skus?.map((sku)=>{
               return(
-                <div onClick={()=>setSkuId(sku?.skuId)} className='border border-black'>
+                <div key={sku?._id} onClick={()=>setSkuId(sku?.skuId)} className='border border-black'>
         <img src={sku?.image?.url} className='h-20' alt="" />
 
             </div>
@@ -279,7 +281,7 @@ const ProductPage = () => {
         </div>
 
         <div className="space-y-6">
-          <div>
+          {product?.varients?.length>0?<div>
             <h3 className="font-medium mb-3">Style</h3>
             <div className="grid grid-cols-2 gap-2">
               {product?.varients?.map((varient) => (
@@ -296,7 +298,7 @@ const ProductPage = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </div>:null}
 
           {product?.colors?.length > 0 ? (
             <div>

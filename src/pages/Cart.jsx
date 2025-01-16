@@ -5,6 +5,7 @@ import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { MoonLoader } from 'react-spinners';
+import { toggle } from "../redux/cartSlice/addToCartToggle";
 
 function Cart() {
   let dispatch = useDispatch();
@@ -77,6 +78,7 @@ function Cart() {
       setOrders(updatedOrder);
       setChange(!change);
       toast.success("Item removed from cart");
+      dispatch(toggle())
     } catch (error) {
       console.error("Failed to remove product from cart:", error);
       toast.error("Failed to remove item");

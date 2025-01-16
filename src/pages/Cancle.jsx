@@ -2,6 +2,7 @@ import React from 'react';
 import { FiXCircle } from 'react-icons/fi';
 
 const CancelPage = () => {
+   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
       {/* Cancel Card */}

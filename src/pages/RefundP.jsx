@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const RefundPolicy = () => {
+   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">

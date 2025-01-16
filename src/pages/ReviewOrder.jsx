@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 const ReviewForm = () => {
   let {id}=useParams()
   let dispatch=useDispatch()
+   useEffect(() => { window.scrollTo(0, 0); }, []);
   let {isLoading,message}=useSelector((state)=>state.addUserReview)
   const [formData, setFormData] = useState({
     rating: 0,

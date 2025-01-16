@@ -7,7 +7,7 @@ import { MoonLoader } from 'react-spinners';
 
 const ProductReviews = () => {
 let dispatch=useDispatch()
-  const [expandedReview, setExpandedReview] = useState(null);
+ useEffect(() => { window.scrollTo(0, 0); }, []);
   let {isLoading,reviews}=useSelector((state)=>state.getAllReviewsUser)
   useEffect(()=>{
     dispatch(getAllReviews()).then((res)=>{

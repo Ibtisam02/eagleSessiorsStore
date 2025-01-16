@@ -18,12 +18,17 @@ const ShopCategories = () => {
       title: "HAIRDRESSING ACCESSORIES",
       image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc8efOQ8Didn0DAtEUiI7svmwMvLj6kEXnp8X6QR4_xyZgodUrCcFCtZtxA7VbcRH8vGg&usqp=CAU",
       alt: "Hairdressing accessories"
+    },
+    {
+      title: "PETS GROOMING SCISSORS",
+      image: "https://res.cloudinary.com/dj0k9z7tr/image/upload/v1737025999/eagleSeissors/pets_wdss0q.jpg",
+      alt: "Pets Grooming Scissors"
     }
   ];
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-12 tracking-wide animate-fade-in text-center">
+      <h1 className="text-4xl font-semibold mb-12 tracking-wide animate-fade-in text-left">
         SHOP ALL
       </h1>
 

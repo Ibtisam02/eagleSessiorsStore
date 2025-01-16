@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaHome, FaSearch } from 'react-icons/fa';
 import { FiRefreshCcw } from 'react-icons/fi';
 
 const NotFoundPage = () => {
+   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen bg-white flex flex-col items-center justify-center p-4">
       {/* 404 Card */}
@@ -50,9 +51,7 @@ const NotFoundPage = () => {
       
       {/* Footer Text */}
       <div className="mt-8 text-center space-y-2">
-        <p className="text-gray-500 text-sm">
-          Lost? Check our <span className="text-black hover:text-gray-600 cursor-pointer underline">sitemap</span>
-        </p>
+        
         <p className="text-gray-400 text-xs">
           Error Code: 404 | Page Not Found
         </p>

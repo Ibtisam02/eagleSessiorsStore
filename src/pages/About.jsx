@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const FadeIn = ({ children, delay = 0 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const domRef = useRef(null);
-
+ useEffect(() => { window.scrollTo(0, 0); }, []);
   useEffect(() => {
     const observer = new IntersectionObserver(entries => {
       // We're only observing one element, so we can use entries[0]

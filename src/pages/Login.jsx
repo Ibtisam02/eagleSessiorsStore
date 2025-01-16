@@ -7,6 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, loginWithGoogle } from "../redux/authSlice";
 import {useGoogleLogin} from "@react-oauth/google"
+import toast from "react-hot-toast";
 
 function Login() {
   const { user } = useSelector((state) => state.auth);
@@ -20,6 +21,12 @@ function Login() {
     const formData = { email, password: pass };
     dispatch(loginUser(formData)).then((data) => {
       console.log(data);
+      if (data?.payload?.success) {
+        toast.success("Logged In Successfully!")
+      }
+      else{
+        toast.error("Failure! Commen Reason(Email Or Password is Invaid!)")
+      }
     });
   };
 

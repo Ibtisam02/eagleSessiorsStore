@@ -44,7 +44,7 @@ const ProductView = () => {
   ];
 
   const filters = {
-    category: ['All', 'Scssiors', 'Razors', 'Acsesories'],
+    category: ['All', 'Scssiors', 'Razors', 'Acsesories','Pets'],
     availability: ['In Stock', 'Out of Stock'],
   };
 
@@ -53,6 +53,7 @@ const ProductView = () => {
     { value: 'Scissors', label: 'Scissors' },
     { value: 'Accessories', label: 'Accessories' },
     { value: 'Razors', label: 'Razors' },
+    { value: 'Pets', label: 'Pets' },
   ]
 
   console.log(catagory);

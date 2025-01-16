@@ -11,8 +11,8 @@ const AdminCard = ({
   title = "Product Title",
   rating = 5,
   reviews = 10,
-  originalPrice = "53,500.00",
-  salePrice = "21,400.00",
+  originalPrice,
+  salePrice ,
   isSpecial = true,
   currency = "PKR",
 }) => {
@@ -48,7 +48,7 @@ const AdminCard = ({
   }, []);
 
   const renderStars = () => {
-    return [...Array(5)]?.map((_, index) => (
+    return [...Array(Math.ceil(rating))]?.map((_, index) => (
       <FaStar
         key={index}
         size={14}
@@ -136,15 +136,15 @@ const AdminCard = ({
         </div>
 
         {/* Rating */}
-        <div className="flex items-center">
+        {rating?<div className="flex items-center">
           <div className="flex mr-1">{renderStars()}</div>
           <span className="text-xs text-gray-500">({reviews})</span>
-        </div>
+        </div>:null}
 
         {/* Pricing */}
         <div className="flex flex-col">
           <p className="text-xs text-gray-500 line-through">
-          {currency} {originalPrice} 
+          {currency} {originalPrice.toLocaleString()} 
           </p>
           <div className="flex items-baseline">
             <span className="text-xs font-medium">From </span>

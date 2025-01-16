@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
+  let navigate=useNavigate()
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
 
@@ -90,7 +92,7 @@ const HeroSection = () => {
               </p>
             </div>
 
-            <button className="bg-black text-white px-8 py-3 rounded-full font-medium transform transition-transform hover:scale-105 active:scale-95">
+            <button onClick={()=>{navigate("/productsBYCatagory/PETS%20GROOMING%20SCISSORS")}} className="bg-black text-white px-8 py-3 rounded-full font-medium transform transition-transform hover:scale-105 active:scale-95">
               SHOP 75% OFF
             </button>
           </div>

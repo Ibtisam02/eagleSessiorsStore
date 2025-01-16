@@ -10,6 +10,7 @@ import { stripePaymentCard } from '../redux/orderSice/stripePayment';
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
+   useEffect(() => { window.scrollTo(0, 0); }, []);
   const { cart } = useSelector((state) => state.itemsInCart);
   const { isLoading } = useSelector((state) => state.placeOrder);
   const { payLoading } = useSelector((state) => state.payWithStripeCard);

@@ -15,6 +15,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
   let dispatch = useDispatch();
+  const isToggled = useSelector((state) => state.addToCartToggle.isToggled);
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -36,6 +37,10 @@ dispatch(getLogo()).then((res)=>{
   let [orders, setOrders] = useState(
     JSON.parse(localStorage.getItem("order")) || []
   );
+
+  useEffect(()=>{
+    setOrders(JSON.parse(localStorage.getItem("order")) || [])
+  },[isToggled])
   let { isLoading, products } = useSelector((state) => state.getAllProducts);
   let {  logo } = useSelector((state) => state.getLogoAll);
 

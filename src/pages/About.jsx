@@ -52,7 +52,7 @@ const About = () => {
               Crafting Excellence in Every Cut
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              At Eagle Scissors, we believe that every stylist deserves tools that match their expertise and passion. Our journey began with a simple mission: to create scissors that combine traditional Japanese craftsmanship with modern innovation.
+              We believe that every stylist deserves tools that match their expertise and passion. Our journey began with a simple mission to create scissors that combine traditional Japanese craftsmanship with modern innovation.
             </p>
           </div>
         </div>
@@ -66,7 +66,7 @@ const About = () => {
               <div className="space-y-6">
                 <h2 className="text-3xl font-bold text-gray-900">Our Story</h2>
                 <p className="text-gray-600 leading-relaxed">
-                  Founded by master craftsmen with over three decades of experience, Eagle Scissors emerged from a dedication to perfection. Our founders spent years studying traditional Japanese blade-making techniques, combining them with contemporary precision engineering.
+                  Founded by master craftsmen with over three decades of experience, our products emerged from a dedication to perfection. Our founders spent years studying traditional Japanese blade-making techniques, combining them with contemporary precision engineering.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
                   Each pair of scissors is meticulously crafted in our workshop, where traditional skills meet modern technology. Our artisans spend countless hours ensuring every detail meets our exacting standards.
@@ -131,9 +131,9 @@ const About = () => {
             </FadeIn>
             <FadeIn delay={400}>
               <div className="space-y-6">
-                <h2 className="text-3xl font-bold">The Eagle Standard</h2>
+                <h2 className="text-3xl font-bold">The Standard And Quality</h2>
                 <p className="leading-relaxed">
-                  Every pair of Eagle Scissors undergoes rigorous quality control, including:
+                  Every pair of Scissors undergoes rigorous quality control, including:
                 </p>
                 <ul className="space-y-4">
                   <li className="flex items-center space-x-3">
@@ -161,7 +161,7 @@ const About = () => {
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-6">Connect With Us</h2>
             <p className="text-gray-600 mb-8">
-              Have questions about our products or interested in becoming a partner? We'd love to hear from you.
+              Have questions about our products or our services? We'd love to hear from you.
             </p>
             <Link to={"/contact"} className="bg-black text-white px-8 py-3 rounded-md hover:bg-gray-800 transition-colors duration-300">
               Contact Us

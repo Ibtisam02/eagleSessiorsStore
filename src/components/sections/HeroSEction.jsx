@@ -61,9 +61,8 @@ const HeroSection = () => {
           <div className="space-y-6">
             <div>
               <p className="text-lg text-gray-700 mb-4">
-                We're clearing stock to make room for new collections! Get
-                <span className="font-semibold text-black"> 75% off </span>
-                premium Japanese scissors without sacrificing quality. Once they're gone, they're gone—don't miss out!
+                Upgrade your cutting experience with premium Japanese scissors! Designed for both professionals and enthusiasts, these scissors combine exceptional quality with unmatched value.
+
               </p>
             </div>
 
@@ -92,8 +91,8 @@ const HeroSection = () => {
               </p>
             </div>
 
-            <button onClick={()=>{navigate("/productsBYCatagory/PETS%20GROOMING%20SCISSORS")}} className="bg-black text-white px-8 py-3 rounded-full font-medium transform transition-transform hover:scale-105 active:scale-95">
-              SHOP 75% OFF
+            <button onClick={()=>{navigate("/productsBYCatagory/CUTTING%20&%20THINNING%20SCISSORS")}} className="bg-black text-white px-8 py-3 rounded-full font-medium transform transition-transform hover:scale-105 active:scale-95">
+              Buy Now
             </button>
           </div>
         </div>

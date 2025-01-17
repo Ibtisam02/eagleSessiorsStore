@@ -20,7 +20,7 @@ const ShopCategories = () => {
       alt: "Hairdressing accessories"
     },
     {
-      title: "PETS GROOMING SCISSORS",
+      title: "PET GROOMING SCISSORS",
       image: "https://res.cloudinary.com/dj0k9z7tr/image/upload/v1737025999/eagleSeissors/pets_wdss0q.jpg",
       alt: "Pets Grooming Scissors"
     }
@@ -28,7 +28,7 @@ const ShopCategories = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-semibold mb-12 tracking-wide animate-fade-in text-left">
+      <h1 className="text-4xl font-medium mb-12 tracking-wide animate-fade-in text-left">
         SHOP ALL
       </h1>
 
@@ -64,8 +64,8 @@ const CategoryCard = ({ category, index }) => {
         <div className="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300" />
       </div>
       
-      <div className="mt-4 flex items-center justify-between p-2">
-        <h2 className="text-sm md:text-lg font-medium text-gray-800 group-hover:text-gray-600 transition-colors duration-300">
+      <div className="mt-4 flex items-center justify-start gap-x-2 p-2">
+        <h2 className="text-sm md:text-[20px] font-medium text-gray-800 group-hover:text-gray-600 transition-colors duration-300">
           {category.title}
         </h2>
         <svg

@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  let date=new Date().getFullYear();
+  
   const footerLinks = [
     { title: "About us", href: "/about" },
     { title: "Privacy Policy", href: "/privacy-policy" },
@@ -29,7 +31,7 @@ const Footer = () => {
           {/* Brand Information */}
           <div className="space-y-4">
             <h2 className="text-lg font-bold mb-4">BRAND INFORMATION</h2>
-            <h3 className="font-medium">Eagle Scissors</h3>
+            <h3 className="font-medium">YM Scissors</h3>
             <div>
               <p className="font-medium">Office hours:</p>
               <p>Monday - Saturday: 8AM - 8PM</p>
@@ -54,7 +56,7 @@ const Footer = () => {
                 <img src="https://cdn1.iconfinder.com/data/icons/simplicity-payment-methods/512/bank_trasfer-128.png" alt="Bank Transfer" className="w-full h-full object-contain scale-150" />
               </div>
               <div className="bg-white p-2 rounded-md w-12 h-8 flex items-center justify-center">
-                <img src="https://cdn1.iconfinder.com/data/icons/simplicity-payment-methods/512/direct_debit-128.png" alt="Bank Transfer" className="w-full h-full object-contain scale-150" />
+                <img src="https://cdn.iconscout.com/icon/free/png-512/free-google-pay-logo-icon-download-in-svg-png-gif-file-formats--gpay-technology-social-media-vol-3-pack-logos-icons-2944906.png?f=webp&w=512" alt="Bank Transfer" className="w-full h-full object-contain scale-150" />
               </div>
             </div>
           </div>
@@ -64,7 +66,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 pt-4 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-sm">
-              <span>© 2025, Eagle Scissors</span>
+              <span>© {date}, YM Scissors</span>
               {/*<a href="#" className="hover:text-gray-300">Powered by Shopify</a>*/}
             </div>
             <div className="flex flex-wrap items-center gap-4 text-sm">

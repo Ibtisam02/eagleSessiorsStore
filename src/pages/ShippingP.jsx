@@ -7,17 +7,17 @@ const ShippingPolicy = () => {
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
         <h2 className="text-3xl font-bold mb-4 text-center">Shipping Policy</h2>
         <p className="mb-4">
-          Thank you for choosing Eagle Scissors! We strive to provide exceptional products and services to our valued customers Worldwide. This shipping policy outlines important information regarding shipping, delivery, and potential delays due to increased sales as we prepare to close down our operations.
+          Thank you for choosing Us! We strive to provide exceptional products and services to our valued customers Worldwide. This shipping policy outlines important information regarding shipping, delivery, and potential delays due to increased sales as we prepare to close down our operations.
         </p>
 
         <h3 className="text-2xl font-semibold mb-3">Shipping Destinations</h3>
         <p className="mb-4">
-          We currently offer shipping services to most countries worldwide. If you are unsure of your location please contact us via email.
+          We currently offer shipping services to most countries worldwide. If you are unsure of your location please contact us via contact form.
         </p>
 
         <h3 className="text-2xl font-semibold mb-3">Shipping Times</h3>
         <p className="mb-4">
-          Please note that our shipping times may be delayed due to the surge in sales as we are running summer sale at the moment. Our stock is held in our UK warehouses. Your order may be shipped from an destination, depending on stock during our summertime sales. We apologize for any inconvenience caused and appreciate your patience during this time.
+        Our stock is held in our various warehouses worldwide. Your order may be shipped from an destination, depending on stock. We apologize for any inconvenience caused and appreciate your patience during shipping time.
         </p>
 
         
@@ -36,12 +36,12 @@ const ShippingPolicy = () => {
         </p>
 
         <p className="mb-4">
-          Shipping fees are a flat & fixed per order, not per item. For expedited shipping or special delivery requests, additional fees may apply. These fees will be clearly communicated during the checkout process.
+          Shipping fees depends on size of the order. For expedited shipping or special delivery requests, additional fees may apply. These fees will be clearly communicated during the checkout process.
         </p>
 
         <h3 className="text-2xl font-semibold mb-3">Order Processing Time</h3>
         <p className="mb-4">
-          Once your order has been placed and payment has been successfully processed, we will begin processing your order. Please allow 1-4 business days for order processing. You will receive a confirmation email with the details of your order and an estimated shipping date.
+          Once your order has been placed and payment has been successfully processed, we will begin processing your order. Please allow 1-2 business days for order processing. You will receive a confirmation email with the details of your order and an estimated shipping date.
         </p>
 
         <h3 className="text-2xl font-semibold mb-3">Tracking Your Order</h3>
@@ -69,10 +69,10 @@ const ShippingPolicy = () => {
         </p>
 
         <p className="mb-4">
-          Thank you for choosing Eagle Scissors. We appreciate your support and understanding during this transition period.
+          Thank you for choosing our products. We appreciate your support and understanding during this transition period.
         </p>
 
-        <p className="mb-4 text-right">Sincerely, Matt @ Eagle Scissors</p>
+        <p className="mb-4 text-right">Sincerely,  @ YM Scissors</p>
       </div>
     </div>
   );

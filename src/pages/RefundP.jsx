@@ -7,15 +7,15 @@ const RefundPolicy = () => {
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
         <h2 className="text-3xl font-bold mb-4 text-center">Refund Policy</h2>
         <p className="mb-4">
-          Thank you for choosing Eagle Scissors! We value your satisfaction and aim to provide high-quality products and services to our customers all around the globe. This refund policy outlines important information regarding refunds, returns, and applicable conditions, including specific considerations for sale items.
+          Thank you for choosing our Products! We value your satisfaction and aim to provide high-quality products and services to our customers all around the globe. This refund policy outlines important information regarding refunds, returns, and applicable conditions, including specific considerations for sale items.
         </p>
 
         <h3 className="text-2xl font-semibold mb-3">Cancellation Policy</h3>
         <p className="mb-4">
-          Once your order has been placed you have 2 hours before your order can be modified or cancelled. Any incorrect address is at the fault of the customer and if the address is no longer contactable by yourself, the parcel will be lost and a refund WILL NOT be given.
+          Any incorrect address is at the fault of the customer and if the address is no longer contactable by yourself, the parcel will be lost and a refund WILL NOT be given.
         </p>
         <p className="mb-4">
-          If you would like to cancel your order for a full refund, this can only be done within a 2-hour period. If it is after this period, you will have to wait till you receive the product and it is returned before a full refund can be given. To cancel your order, please send an email at hello@eaglescissors.com. The email MUST contain information such as: First Name, Last Name, Order Number, and Email Address. Otherwise, the order will not be cancelled and will ship as usual.
+          If you would like to cancel your order for a full refund, this can only be done within a 2-hour period. If it is after this period, you will have to wait till you receive the product and it is returned and customer will be liable to pay return shipping charges. To cancel your order, please send an email at eagletrader121@gmail.com. The email MUST contain information such as: First Name, Last Name, Order Number, and Email Address. Otherwise, the order will not be cancelled and will ship as usual.
         </p>
 
         <h3 className="text-2xl font-semibold mb-3">Refund Eligibility</h3>
@@ -35,7 +35,7 @@ const RefundPolicy = () => {
 
         <h3 className="text-2xl font-semibold mb-3">Return Procedure</h3>
         <ol className="list-decimal list-inside mb-4">
-          <li>Contact our customer support team by email at hello@eaglescissors.com to notify us of your intention to return or exchange an item.</li>
+          <li>Contact our customer support team by email at eagletrader121@gmail.com to notify us of your intention to return or exchange an item.</li>
           <li>Our customer support team will guide you through the return process, providing you with the necessary instructions and any applicable return shipping labels.</li>
           <li>Ensure that the item is securely packaged in its original packaging, including all accessories and documentation. We recommend using a traceable shipping method to return the item.</li>
           <li>Upon receiving the returned item, we will inspect it to ensure that it meets the required conditions for return or exchange. If the item is eligible, we will process the appropriate resolution as agreed upon during our communication.</li>
@@ -59,7 +59,7 @@ const RefundPolicy = () => {
 
         <h3 className="text-2xl font-semibold mb-3">Contact Us</h3>
         <p className="mb-4">
-          If you have any questions or concerns regarding our refund policy or require further assistance, please don't hesitate to contact our customer support team. You can reach us by email at hello@eaglescissors.com. We will respond to your inquiries as soon as possible.
+          If you have any questions or concerns regarding our refund policy or require further assistance, please don't hesitate to contact our customer support team. You can reach us by email at eagletrader121@gmail.com. We will respond to your inquiries as soon as possible.
         </p>
 
         <p className="mb-4">
@@ -67,10 +67,10 @@ const RefundPolicy = () => {
         </p>
 
         <p className="mb-4">
-          Thank you for choosing Eagle Scissors. We appreciate your support and understanding.
+          Thank you for choosing our products. We appreciate your support and understanding.
         </p>
 
-        <p className="mb-4 text-right">Sincerely, Matt @ Eagle Scissors</p>
+        <p className="mb-4 text-right">Sincerely, @ YM Scissors</p>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ const TermsOfService = () => {
           <section className="mb-6">
             <h2 className="text-2xl font-semibold mb-3">OVERVIEW</h2>
             <p className="mb-4">
-              This website is operated by Eagle Scissors. Throughout the site, the terms "we", "us" and "our" refer to Eagle Scissors. Eagle Scissors offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
+              This website is operated by YM Scissors. Throughout the site, the terms "we", "us" and "our" refer to YM Scissors. YM Scissors offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
             </p>
             <p className="mb-4">
               By visiting our site and/or purchasing something from us, you engage in our "Service" and agree to be bound by the following terms and conditions ("Terms of Service", "Terms"), including those additional terms and conditions and policies referenced herein and/or available by hyperlink.

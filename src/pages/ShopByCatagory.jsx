@@ -83,7 +83,7 @@ const ShopByCategory = () => {
         <div className="max-w-3xl">
           <p className="text-lg text-gray-600 leading-relaxed hover:text-gray-800 transition-colors duration-300">
             Discover precision and comfort with the 
-            <span className="italic font-medium"> Eagle Scissors {catagory} Collection</span>
+            <span className="italic font-medium"> {catagory} Collection</span>
           </p>
         </div>
 

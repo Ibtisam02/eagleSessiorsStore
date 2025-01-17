@@ -143,13 +143,13 @@ const AdminCard = ({
 
         {/* Pricing */}
         <div className="flex flex-col">
-          <p className="text-xs text-gray-500 line-through">
+          {Number(originalPrice)===Number(salePrice)?null:<p className="text-xs text-gray-500 line-through">
           {currency} {originalPrice.toLocaleString()} 
-          </p>
+          </p>}
           <div className="flex items-baseline">
             <span className="text-xs font-medium">From </span>
             <p className="ml-1 text-sm font-semibold">
-            {currency} {salePrice}
+            {currency} {salePrice.toLocaleString()}
             </p>
           </div>
         </div>

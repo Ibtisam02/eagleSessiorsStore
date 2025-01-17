@@ -54,6 +54,7 @@ function App() {
     return (
       <GoogleOAuthProvider clientId='86406764343-g6hbgcgne1f6u7nbna9fpctpq5hv9s1d.apps.googleusercontent.com'>
         <Login/>
+        <Register/>
       </GoogleOAuthProvider>
     )
   }

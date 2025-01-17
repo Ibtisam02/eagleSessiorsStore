@@ -40,13 +40,13 @@ const AddProduct = () => {
 
 
   // New Category Form State
-  const [categories] = useState(["Scissors", "Razors", "Accessories"]);
+  const [categories] = useState(["Scissors", "Razors", "Accessories","Pets"]);
 
   useEffect(() => {
     if (product) {
       setBasicDetails({
         name: product?.name || "",
-        discount: product?.discount || "",
+        discount: product?.discount || 0,
         brand: product?.brand || "",
         basePrice: product?.basePprice || "",
         category: product?.catagory || "",

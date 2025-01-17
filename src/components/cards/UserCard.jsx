@@ -9,8 +9,8 @@ const UserCard = ({
   title = "Product Title",
   rating = 5,
   reviews = 1,
-  originalPrice = "53,500.00",
-  salePrice = "21,400.00",
+  originalPrice ,
+  salePrice ,
   isSpecial = true,
   currency = "PKR",
 }) => {
@@ -113,9 +113,9 @@ const UserCard = ({
 
         {/* Pricing */}
         <div className="flex flex-col mt-auto">
-          <p className="text-xs text-gray-500 line-through">
+          {Number(originalPrice)===Number(salePrice)?null:<p className="text-xs text-gray-500 line-through">
             {currency} {originalPrice.toLocaleString()}
-          </p>
+          </p>}
           <div className="flex items-baseline">
             <span className="text-xs font-medium">From </span>
             <p className="ml-1 text-sm font-semibold">

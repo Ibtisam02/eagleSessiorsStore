@@ -16,7 +16,7 @@ const ProductListAdmin = ({products}) => {
       <div className='flex justify-around items-start flex-wrap gap-y-5'>
         {products?.map((product, index) => (
 
-            <AdminCard key={index} id={product?._id} currency='£' image1={product?.images?.[0]?.url} image2={product?.images?.[1]?.url} isSpecial={product?.discount?true:false} title={product?.name} rating={product?.rating} reviews={product?.numberOfReviews} originalPrice={product?.basePprice} salePrice={(product?.basePprice-(product?.basePprice/100*product?.discount)).toLocaleString()}                                        />
+            <AdminCard key={index} id={product?._id} currency='£' image1={product?.images?.[0]?.url} image2={product?.images?.[1]?.url} isSpecial={product?.discount?true:false} title={product?.name} rating={product?.rating} reviews={product?.numberOfReviews} originalPrice={product?.basePprice} salePrice={(product?.basePprice-(product?.basePprice/100*product?.discount))}                                        />
         ))}
         </div>
       

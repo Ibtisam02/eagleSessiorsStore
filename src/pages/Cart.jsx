@@ -209,7 +209,7 @@ function Cart() {
             </div>
           ))}
         </div>}
-          <input onClick={()=>{localStorage.removeItem("order");setChange(!change);toast.success("Cart Cleared Successfully!")}} className="mt-4 cursor-pointer py-3 px-4 bg-black hover:bg-primary text-white rounded-lg transition-colors" type="button" value="Clear Cart" />
+          <input onClick={()=>{localStorage.removeItem("order");setChange(!change);toast.success("Cart Cleared Successfully!");dispatch(toggle())}} className="mt-4 cursor-pointer py-3 px-4 bg-black hover:bg-primary text-white rounded-lg transition-colors" type="button" value="Clear Cart" />
 
         {cart?.length > 0 ? (
           <div className="mt-8 bg-white rounded-lg p-6 shadow-sm">
@@ -233,7 +233,7 @@ function Cart() {
         ) : (
           <div className="text-center py-12">
             <p className="text-gray-500 text-lg">Your cart is empty</p>
-            <button onClick={()=>{localStorage.removeItem("order")}} className="w-full py-3 px-4 bg-black hover:bg-primary text-white rounded-lg transition-colors">
+            <button onClick={()=>{localStorage.removeItem("order");dispatch(toggle())}} className="w-full py-3 px-4 bg-black hover:bg-primary text-white rounded-lg transition-colors">
               Clear Cart
             </button>
           </div>

@@ -6,8 +6,9 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { registerUser } from "../redux/authSlice";
+import { loginWithGoogle, registerUser } from "../redux/authSlice";
 import toast from "react-hot-toast";
+import { useGoogleLogin } from "@react-oauth/google";
 
 function Register() {
   const dispatch = useDispatch();
@@ -33,8 +34,28 @@ function Register() {
         toast.success(data?.payload?.message+" please login now")
         navigate("/login")
       }
+      else{
+        toast.error('error! invalid credentils or account with this email already exist')
+      }
     });
   };
+  let responseGoogle=async (authResult)=>{
+    try {
+      console.log(authResult?.code);
+      dispatch(loginWithGoogle(authResult?.code)).then((res)=>{
+        console.log(res);
+      })
+      
+    } catch (error) {
+      console.error("Error while requesting google");
+      
+    }
+  }
+  let googleLogin=useGoogleLogin({
+    onSuccess:responseGoogle,
+    onError:responseGoogle,
+    flow:"auth-code"
+  })
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center px-4 bg-white">
@@ -93,6 +114,7 @@ function Register() {
               type={showPass ? "text" : "password"}
               value={password}
               required
+              minLength={8}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
@@ -107,6 +129,7 @@ function Register() {
 
           {/* Google Sign In Button */}
           <button
+          onClick={googleLogin}
             type="button"
             className="w-full flex items-center justify-center bg-black text-white py-2 rounded-md font-semibold gap-x-2 hover:bg-gray-800 transition duration-300"
           >

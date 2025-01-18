@@ -52,7 +52,7 @@ function App() {
 
   const GoogleAuthWraper=()=>{
     return (
-      <GoogleOAuthProvider clientId='86406764343-g6hbgcgne1f6u7nbna9fpctpq5hv9s1d.apps.googleusercontent.com'>
+      <GoogleOAuthProvider clientId='1070290611055-d476dco29k89pmp6oil634jgksucuen0.apps.googleusercontent.com'>
         <Login/>
         <Register/>
       </GoogleOAuthProvider>

@@ -9,10 +9,26 @@ import { loadStripe } from "@stripe/stripe-js";
 import { stripePaymentCard } from "../redux/orderSice/stripePayment";
 import { toggle } from "../redux/cartSlice/addToCartToggle";
 import { SiGooglepay } from "react-icons/si";
+import axios from "axios";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
+  let [sdkReady,setSdkReady]=useState(false)
   useEffect(() => {
+    const addPayPalScript=async()=>{
+      const{data:clientId}=await axios.get("/config/paypal")
+      console.log(clientId);
+      const script=document.createElement('script')
+      script.type="text/javascript"
+      script.async=true;
+      script.src=`https://sandbox.paypal.com/sdk/js?client-id=${clientId}`
+      script.onload=()=>{
+        setSdkReady(true)
+      }
+      document.body.appendChild(script)
+    }
+
+    addPayPalScript();
     window.scrollTo(0, 0);
   }, []);
   const { cart } = useSelector((state) => state.itemsInCart);

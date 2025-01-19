@@ -21,7 +21,7 @@ const ShopCategories = () => {
     },
     {
       title: "PET GROOMING SCISSORS",
-      image: "https://res.cloudinary.com/dj0k9z7tr/image/upload/v1737025999/eagleSeissors/pets_wdss0q.jpg",
+      image: "https://res.cloudinary.com/dsilhases/image/upload/v1737304677/51HnBiLn2JL_1_whttik.jpg",
       alt: "Pets Grooming Scissors"
     }
   ];

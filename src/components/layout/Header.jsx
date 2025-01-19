@@ -15,6 +15,7 @@ import toast from "react-hot-toast";
 
 const Navbar = () => {
   let dispatch = useDispatch();
+  
   const isToggled = useSelector((state) => state.addToCartToggle.isToggled);
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -43,6 +44,7 @@ dispatch(getLogo()).then((res)=>{
   },[isToggled])
   let { isLoading, products } = useSelector((state) => state.getAllProducts);
   let {  logo } = useSelector((state) => state.getLogoAll);
+console.log(logo);
 
   useEffect(() => {
     const handleScroll = () => {

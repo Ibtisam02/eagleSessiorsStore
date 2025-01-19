@@ -67,10 +67,10 @@ const RefundPolicy = () => {
         </p>
 
         <p className="mb-4">
-          Thank you for choosing our products. We appreciate your support and understanding.
+          Thank you for choosing Eagle Traders Uk Ltd. We appreciate your support and understanding.
         </p>
 
-        <p className="mb-4 text-right">Sincerely, @ YM Scissors</p>
+        <p className="mb-4 text-right">Sincerely, Eagle Traders Uk Ltd</p>
       </div>
     </div>
   );

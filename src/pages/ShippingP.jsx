@@ -7,7 +7,7 @@ const ShippingPolicy = () => {
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
         <h2 className="text-3xl font-bold mb-4 text-center">Shipping Policy</h2>
         <p className="mb-4">
-          Thank you for choosing Us! We strive to provide exceptional products and services to our valued customers Worldwide. This shipping policy outlines important information regarding shipping, delivery, and potential delays due to increased sales as we prepare to close down our operations.
+          Thank you for choosing www.thebarberscissors.com! We strive to provide exceptional products and services to our valued customers Worldwide. This shipping policy outlines important information regarding shipping, delivery, and potential delays due to increased sales as we prepare to close down our operations.
         </p>
 
         <h3 className="text-2xl font-semibold mb-3">Shipping Destinations</h3>
@@ -61,7 +61,7 @@ const ShippingPolicy = () => {
 
         <h3 className="text-2xl font-semibold mb-3">Contact Us</h3>
         <p className="mb-4">
-          If you have any questions or concerns regarding our shipping policy or require further assistance, please don't hesitate to contact our customer support team. You can reach us by email at eagletraders121@gmail.com. We will respond to your inquiries as soon as possible.
+          If you have any questions or concerns regarding our shipping policy or require further assistance, please don't hesitate to contact our customer support team. You can reach us by filling contact form on our website. We will respond to your inquiries as soon as possible.
         </p>
 
         <p className="mb-4">
@@ -72,7 +72,7 @@ const ShippingPolicy = () => {
           Thank you for choosing our products. We appreciate your support and understanding during this transition period.
         </p>
 
-        <p className="mb-4 text-right">Sincerely,  @ YM Scissors</p>
+        <p className="mb-4 text-right">Sincerely, Eagle Traders Uk Ltd</p>
       </div>
     </div>
   );

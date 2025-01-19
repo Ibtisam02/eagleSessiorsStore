@@ -3,7 +3,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const initialState = {
-  payLoading: false,
+  paypalLoading: false,
   session:null
 };
 
@@ -35,14 +35,14 @@ export const paypalPaymentCard = createAsyncThunk(
     extraReducers: (builder) => {
       builder
         .addCase(paypalPaymentCard.pending, (state) => {
-          state.payLoading = true;
+          state.paypalLoading = true;
         })
         .addCase(paypalPaymentCard.fulfilled, (state, action) => {
-          state.payLoading = false;
+          state.paypalLoading = false;
           state.session = action.payload?action.payload?.links:null;
         })
         .addCase(paypalPaymentCard.rejected, (state, action) => {
-          state.payLoading = false;
+          state.paypalLoading = false;
           state.session = null;
         })
     },

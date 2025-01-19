@@ -20,6 +20,7 @@ const CheckoutPage = () => {
   const { cart } = useSelector((state) => state.itemsInCart);
   const { isLoading } = useSelector((state) => state.placeOrder);
   const { payLoading } = useSelector((state) => state.payWithStripeCard);
+  const { paypalLoading } = useSelector((state) => state.paypalPayment);
   const [orders, setOrders] = useState(
     JSON.parse(localStorage.getItem("order")) || []
   );
@@ -92,7 +93,7 @@ const CheckoutPage = () => {
       else if(paymentMethod==="paypal"){
         console.log("work");
         
-        dispatch(paypalPaymentCard()).then((res)=>{
+        dispatch(paypalPaymentCard({shippingData,orders})).then((res)=>{
           console.log(res);
           if (res?.payload?.links[1]) {
             let link = res.payload.links[1].href
@@ -346,10 +347,10 @@ const CheckoutPage = () => {
 
                   <button
                     onClick={handlePayment}
-                    disabled={payLoading || isLoading}
+                    disabled={payLoading || isLoading||paypalLoading}
                     className="w-full py-4 px-6 mt-6 bg-black hover:bg-gray-800 text-white rounded-lg transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed text-lg font-medium"
                   >
-                    {payLoading || isLoading ? "Processing..." : "Place Order"}
+                    {payLoading||paypalLoading || isLoading ? "Processing..." : "Place Order"}
                   </button>
 
                   <p className="text-center text-sm text-gray-500 mt-4">

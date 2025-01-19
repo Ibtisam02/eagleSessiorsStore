@@ -10,7 +10,7 @@ const PrivacyPolicy = () => {
         
         <h3 className="text-2xl font-semibold mb-3">Introduction</h3>
         <p className="mb-4">
-          This Privacy Policy describes how YM Scissors (the "Site", "we", "us", or "our") collects, uses, and discloses your personal information when you visit, use our services, or make a purchase from www.eaglescissors.com (the "Site") or otherwise communicate with us regarding the Site (collectively, the "Services"). For purposes of this Privacy Policy, "you" and "your" means you as the user of the Services, whether you are a customer, website visitor, or another individual whose information we have collected pursuant to this Privacy Policy.
+          This Privacy Policy describes how Eagle Traders UK Ltd (the "Site", "we", "us", or "our") collects, uses, and discloses your personal information when you visit, use our services, or make a purchase from www.thebarberscissors.com (the "Site") or otherwise communicate with us regarding the Site (collectively, the "Services"). For purposes of this Privacy Policy, "you" and "your" means you as the user of the Services, whether you are a customer, website visitor, or another individual whose information we have collected pursuant to this Privacy Policy.
         </p>
 
         <h3 className="text-2xl font-semibold mb-3">Changes to This Privacy Policy</h3>

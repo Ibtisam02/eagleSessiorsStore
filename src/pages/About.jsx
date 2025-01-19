@@ -76,7 +76,7 @@ const About = () => {
             <FadeIn delay={400}>
               <div className="relative h-[400px]">
                 <img 
-                  src="https://www.sakurascissors.com/cdn/shop/files/Screenshot_2024-04-13_at_00.32.13.png?v=1712964771&width=750"
+                  src="https://res.cloudinary.com/dsilhases/image/upload/v1737296604/982f4b90-3293-4ded-bf99-e109a41e137d_20250119_142013_0000_a3jrih.jpg"
                   alt="Crafting process" 
                   className="w-full h-full object-cover rounded-lg shadow-xl"
                 />
@@ -123,7 +123,7 @@ const About = () => {
             <FadeIn delay={200}>
               <div className="relative h-[400px]">
                 <img 
-                  src="https://www.sakurascissors.com/cdn/shop/files/Screenshot_2024-04-13_at_00.33.59.png?v=1712964880&width=750"
+                  src="https://res.cloudinary.com/dsilhases/image/upload/v1737295974/86202c1c-35af-4e0e-801d-369f47d88319_20250119_014602_0000_uddrpl.jpg"
                   alt="Quality inspection" 
                   className="w-full h-full object-cover rounded-lg"
                 />

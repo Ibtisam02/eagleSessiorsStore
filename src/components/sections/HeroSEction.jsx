@@ -43,7 +43,7 @@ const HeroSection = () => {
         }`}>
           <div className="relative aspect-[4/3] w-full">
             <img
-              src="https://www.sakurascissors.com/cdn/shop/files/185A4678_1_-Photoroom.jpg?v=1734046260&width=750"
+              src="https://res.cloudinary.com/dsilhases/image/upload/v1737290994/b560d8d1-0063-4b3c-bb6b-02749e5801b3_20250119_124335_0000_jcygsr.jpg"
               alt="Japanese Steel Scissors Collection"
               className="w-full h-full object-cover rounded-lg shadow-lg"
             />

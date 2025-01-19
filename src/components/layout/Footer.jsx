@@ -31,7 +31,7 @@ const Footer = () => {
           {/* Brand Information */}
           <div className="space-y-4">
             <h2 className="text-lg font-bold mb-4">BRAND INFORMATION</h2>
-            <h3 className="font-medium">YM Scissors</h3>
+            <h3 className="font-semibold">Eagle Traders Uk Ltd</h3>
             <div>
               <p className="font-medium">Office hours:</p>
               <p>Monday - Saturday: 8AM - 8PM</p>
@@ -66,7 +66,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 pt-4 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2 text-sm">
-              <span>© {date}, YM Scissors</span>
+              <span>© {date}, Eagle Traders Uk Ltd</span>
               {/*<a href="#" className="hover:text-gray-300">Powered by Shopify</a>*/}
             </div>
             <div className="flex flex-wrap items-center gap-4 text-sm">

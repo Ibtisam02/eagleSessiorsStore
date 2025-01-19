@@ -12,7 +12,7 @@ const TermsOfService = () => {
           <section className="mb-6">
             <h2 className="text-2xl font-semibold mb-3">OVERVIEW</h2>
             <p className="mb-4">
-              This website is operated by YM Scissors. Throughout the site, the terms "we", "us" and "our" refer to YM Scissors. YM Scissors offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
+            Welcome to Eagle Traders Uk Ltd. Throughout the site, the terms "we", "us" and "our" refer to Eagle Traders Uk Ltd. Eagle Traders Uk Ltd offers this website, including all information, tools and Services available from this site to you, the user, conditioned upon your acceptance of all terms, conditions, policies and notices stated here.
             </p>
             <p className="mb-4">
               By visiting our site and/or purchasing something from us, you engage in our "Service" and agree to be bound by the following terms and conditions ("Terms of Service", "Terms"), including those additional terms and conditions and policies referenced herein and/or available by hyperlink.
@@ -28,6 +28,7 @@ const TermsOfService = () => {
               <li>You may not use our products for any illegal or unauthorized purpose.</li>
               <li>You must not transmit any worms or viruses or any code of a destructive nature.</li>
               <li>A breach or violation of any of the Terms will result in an immediate termination of your Services.</li>
+              <li>Do not use our products for any illeagal or harmful activity even if you buy from our store.</li>
             </ul>
           </section>
 
@@ -72,7 +73,7 @@ const TermsOfService = () => {
           <section className="mb-6">
             <h2 className="text-2xl font-semibold mb-3">CONTACT INFORMATION</h2>
             <p className="mb-4">
-              Questions about the Terms of Service should be sent to us at eagletraders121@gmail.com
+              Questions about the Terms of Service should be sent to us at eagletraders121@gmail.com.
             </p>
           </section>
 

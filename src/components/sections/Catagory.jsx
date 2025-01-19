@@ -6,7 +6,7 @@ const ShopCategories = () => {
   const categories = [
     {
       title: "CUTTING & THINNING SCISSORS",
-      image: "https://www.sakurascissors.com/cdn/shop/collections/S4c690cdc15d8432fb8c6ab2c7ebde554C-Photoroom.jpg?v=1734048316&width=535",
+      image: "https://res.cloudinary.com/dsilhases/image/upload/v1737313618/a6d2a91f-fbb3-421d-9fd9-8f2722d533e6_20250119_190554_0000_dn6fyu.jpg",
       alt: "Right handed scissors"
     },
     {

@@ -36,7 +36,6 @@ const CheckoutPage = () => {
     zipCode: "",
     country: "",
   });
-  console.log(process.env.STRIPE_PUBLISHABLE_KEY);
 
   useEffect(() => {
     if (orders.length > 0) {

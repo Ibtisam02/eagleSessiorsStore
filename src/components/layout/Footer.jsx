@@ -53,9 +53,6 @@ const Footer = () => {
                 <img src="https://cdn3.iconfinder.com/data/icons/payment-method-1/64/_Mastercard-128.png" alt="Mastercard" className="w-full h-full object-contain scale-150" />
               </div>
               <div className="bg-white p-2 rounded-md w-12 h-8 flex items-center justify-center">
-                <img src="https://cdn1.iconfinder.com/data/icons/simplicity-payment-methods/512/bank_trasfer-128.png" alt="Bank Transfer" className="w-full h-full object-contain scale-150" />
-              </div>
-              <div className="bg-white p-2 rounded-md w-12 h-8 flex items-center justify-center">
                 <img src="https://cdn.iconscout.com/icon/free/png-512/free-google-pay-logo-icon-download-in-svg-png-gif-file-formats--gpay-technology-social-media-vol-3-pack-logos-icons-2944906.png?f=webp&w=512" alt="Bank Transfer" className="w-full h-full object-contain scale-150" />
               </div>
             </div>

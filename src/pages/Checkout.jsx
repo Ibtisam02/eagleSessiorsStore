@@ -9,26 +9,12 @@ import { loadStripe } from "@stripe/stripe-js";
 import { stripePaymentCard } from "../redux/orderSice/stripePayment";
 import { toggle } from "../redux/cartSlice/addToCartToggle";
 import { SiGooglepay } from "react-icons/si";
-import axios from "axios";
+import { paypalPaymentCard } from "../redux/orderSice/paypalPayment";
 
 const CheckoutPage = () => {
   const dispatch = useDispatch();
-  let [sdkReady,setSdkReady]=useState(false)
   useEffect(() => {
-    const addPayPalScript=async()=>{
-      const{data:clientId}=await axios.get("/config/paypal")
-      console.log(clientId);
-      const script=document.createElement('script')
-      script.type="text/javascript"
-      script.async=true;
-      script.src=`https://sandbox.paypal.com/sdk/js?client-id=${clientId}`
-      script.onload=()=>{
-        setSdkReady(true)
-      }
-      document.body.appendChild(script)
-    }
-
-    addPayPalScript();
+    
     window.scrollTo(0, 0);
   }, []);
   const { cart } = useSelector((state) => state.itemsInCart);
@@ -102,7 +88,19 @@ const CheckoutPage = () => {
             sessionId: res.payload.id,
           });
         });
-      } else if (paymentMethod === "cod") {
+      }
+      else if(paymentMethod==="paypal"){
+        console.log("work");
+        
+        dispatch(paypalPaymentCard()).then((res)=>{
+          console.log(res);
+          if (res?.payload?.links[1]) {
+            let link = res.payload.links[1].href
+            window.location.href = link
+          }
+        })
+      }
+      else if (paymentMethod === "cod") {
         dispatch(
           placeOrderWithCod({
             shippingData,
@@ -269,7 +267,7 @@ const CheckoutPage = () => {
           onClick={() => setPaymentMethod('card')}
         >
           
-          <span>Credit Card / Google Pay / Bank Transfer</span>
+          <span>Credit Card / Google Pay</span>
         </button>
       </div>
       <div className="grid grid-cols-2 gap-4">
@@ -286,7 +284,7 @@ const CheckoutPage = () => {
           type="button"
           className={`p-4 border rounded-lg flex items-center justify-center gap-2 transition-all
             ${paymentMethod === 'cod' ? 'border-black bg-black text-white' : 'hover:bg-gray-50'}`}
-          onClick={() => setPaymentMethod('cod')}
+          onClick={() => setPaymentMethod('paypal')}
         >
           <FaTruck />
           <span>Cash on Delivery</span>

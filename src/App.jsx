@@ -73,10 +73,9 @@ function App() {
   return (
     <>
       <Toaster />
-      <WhatsAppWidget
-        message="Hello! How can I help you?"
-        phoneNumber="+44 7758 136346"
-      />
+      <a href="https://wa.me/+447758136346" target="_blank">
+      <WhatsAppWidget/>
+      </a>
       {isLoading ? (
         <div className="sweet-loading w-screen h-screen flex justify-center items-center">
           <MoonLoader

@@ -7,7 +7,7 @@ const ShippingPolicy = () => {
       <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
         <h2 className="text-3xl font-bold mb-4 text-center">Shipping Policy</h2>
         <p className="mb-4">
-          Thank you for choosing www.thebarberscissors.com! We strive to provide exceptional products and services to our valued customers Worldwide. This shipping policy outlines important information regarding shipping, delivery, and potential delays due to increased sales as we prepare to close down our operations.
+          Thank you for choosing thebarberscissors.com! We strive to provide exceptional products and services to our valued customers Worldwide. This shipping policy outlines important information regarding shipping, delivery, and potential delays due to increased sales as we prepare to close down our operations.
         </p>
 
         <h3 className="text-2xl font-semibold mb-3">Shipping Destinations</h3>

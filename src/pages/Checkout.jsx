@@ -284,7 +284,7 @@ const CheckoutPage = () => {
           type="button"
           className={`p-4 border rounded-lg flex items-center justify-center gap-2 transition-all
             ${paymentMethod === 'cod' ? 'border-black bg-black text-white' : 'hover:bg-gray-50'}`}
-          onClick={() => setPaymentMethod('paypal')}
+          onClick={() => setPaymentMethod('cod')}
         >
           <FaTruck />
           <span>Cash on Delivery</span>

@@ -84,7 +84,7 @@ console.log(logo);
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500
         ${isScrolled ? "bg-black/80 backdrop-blur-xl shadow-lg" : "bg-black"}
         border-b border-white/10`}
-      >
+      > 
         {/* Main Navbar Content */}
         <nav
           className={`relative text-white transition-opacity duration-300 ${
